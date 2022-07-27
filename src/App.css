@@ -1,0 +1,157 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 1rem;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 70%;
+    margin-left: 14px;
+  }
+  
+  th,
+  td {
+    border: 1px solid #ffffff;
+    text-align: left;
+    padding: 8px;
+    font-size: 18px;
+    font-family: Helvetica;
+  }
+  
+  th {
+    background-color: #49494A;
+    color: rgb(255, 255, 255);
+    font-family:  Helvetica ; 
+  }
+  
+  td {
+    background-color: rgb(235, 235, 235);
+    font-family: Helvetica;
+  }
+  
+  form {
+    display: flex;
+    gap: 2px;
+  }
+  
+  form td:last-child {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  form * {
+    font-size: 28px;
+  }
+
+  /* button {
+    width: 120px;
+    height: 80px;
+  } */
+
+  .relative {
+    padding: 10px;
+    position: relative;
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+   } 
+   .navitem {
+    display: inline-block;
+    width: 150px; 
+    height: 30px; 
+    text-align: center;
+    border: #49494A;
+    background-color: #b7b6d4;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-weight: bold;
+    margin:10px;
+  }
+  /* button {
+    height: 30px;
+
+  } */
+  .buttonSpace {
+    margin-left: 20px;
+
+  }
+
+  .button1 {
+    /*margin-left: 30%;*/
+    /* margin-left: 35% !important; */
+    margin:30px;
+  }
+
+  .drop{ 
+    margin:10px;
+
+  }
+  .topnav {
+    background-color: #49494A;
+    overflow: hidden;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    display: block;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #49494A;
+    color: #AEAEAF;
+  }
+  
+  /* Add an active class to highlight the current page */
+  .topnav a.active {
+    background-color: #49494A;
+    color: rgb(255, 255, 255);
+  }
+  
+  /* Hide the link that should open and close the topnav on small screens */
+  .topnav .icon {
+    display: none;
+  }
+  
+  label {
+    margin:40px;
+    
+    font-size: 16px;
+    width:70px;
+    display:inline-block;
+    font-family: Helvetica;
+   
+  }
+
+
+
+  .card {
+    margin-top: 0px;
+    width: 30%;
+    height:50px;
+    
+  }
+
+  .card > button {
+    margin-left: 20px;
+    border-radius: 3px;
+    background-color: #F7901D;
+    color:#000000;
+    width:100px;
+    border: 0px;
+    height:30px;
+  }
+  .cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+
