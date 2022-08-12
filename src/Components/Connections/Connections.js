@@ -37,7 +37,7 @@ const data = [
   },
 ];
 
-export default function ConnectionsList() {
+export default function Connections() {
   const [connectionsList, setConnectionsList] = useState();
   useEffect(() => {
     const url =
@@ -126,7 +126,7 @@ export default function ConnectionsList() {
     },
   ];
   const dataSource =
-    connectionsList.length > 0
+    connectionsList?.length > 0
       ? connectionsList
       : JSON.parse(data.replace("NaN", "null"));
   return <Table columns={columns} dataSource={dataSource} />;

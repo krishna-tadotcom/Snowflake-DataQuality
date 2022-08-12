@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal, List, Skeleton, Avatar } from "antd";
 import axios from "axios";
-// import projects from "./projects";
 
-const ProjectsList = () => {
+const Projects = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({});
   const [initLoading, setInitLoading] = useState(true);
@@ -111,4 +110,4 @@ const ProjectsList = () => {
   );
 };
 
-export default ProjectsList;
+export default Projects;

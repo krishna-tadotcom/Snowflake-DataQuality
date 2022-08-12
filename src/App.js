@@ -1,41 +1,63 @@
 import React from "react";
-// import Tables from "./Components/Tables/Tables";
-import "antd/dist/antd.min.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
-import ConnectionsList from "./Components/ConnectionsList/ConnectionsList";
-import ProjectsList from "./Components/ProjectsList/ProjectsList";
-import CreateProject from "./Components/ProjectsList/CreateProject";
+import Container from "./Components/Container/Container";
+import Home from "./Components/Home/Home";
+
+import Connections from "./Components/Connections/Connections";
+import CreateConnection from "./Components/Connections/CreateConnection";
+import EditConnection from "./Components/Connections/EditConnection";
+import DeleteConnection from "./Components/Connections/DeleteConnection";
+
+import Projects from "./Components/Projects/Projects";
+import CreateProject from "./Components/Projects/CreateProject";
+import EditProject from "./Components/Projects/EditProject";
+import DeleteProject from "./Components/Projects/DeleteProject";
+
+import CreateUser from "./Components/Users/CreateUser";
+import EditUser from "./Components/Users/EditUser";
+import DeleteUser from "./Components/Users/DeleteUser";
+import Users from "./Components/Users/Users";
+
+import DataSets from "./Components/DataSet/DataSets";
 import CreateDataSet from "./Components/DataSet/CreateDataSet";
-import DataSetsList from "./Components/DataSet/DataSetsList";
-import Layout from "./Components/MainContainer/MainContainer";
-// import { Layout } from "antd";
-// import "./Drop2.css";
+import EditDataSet from "./Components/DataSet/EditDataSet";
+import DeleteDataSet from "./Components/DataSet/DeleteDataSet";
+
+import Profiling from "./Components/Profiling/Profiling";
+import Validation from "./Components/Validation/Validation";
+
+import "./App.css";
+import "antd/dist/antd.min.css";
 
 const App = () => {
   return (
     <div>
-      {/* <BrowserRouter>
-        <Routes>
-          <Route path="/" exact element={<Navigation />} />
-          <Route
-            path="/create-connection"
-            exact
-            element={<CreateConnection />}
-          />
-        </Routes>
-      </BrowserRouter> */}
-
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<h1>Home Page </h1>} />
-            <Route path="connectionlist" element={<ConnectionsList />} />
-            <Route path="projectslist" element={<ProjectsList />} />
-            <Route path="CreateProject" element={<CreateProject />} />
-            <Route path="ProjectDelete" element={<CreateProject />} />
-            <Route path="createdataset" element={<CreateDataSet />} />
-            <Route path="datasetlist" element={<DataSetsList />} />
+          <Route path="/" element={<Container />}>
+            <Route index element={<Home />} />
+            <Route path="connections" element={<Connections />} />
+            <Route path="edit-connection" element={<EditConnection />} />
+            <Route path="delete-connection" element={<DeleteConnection />} />
+            <Route path="create-connection" element={<CreateConnection />} />
+
+            <Route path="users" element={<Users />} />
+            <Route path="edit-user" element={<EditUser />} />
+            <Route path="delete-user" element={<DeleteUser />} />
+            <Route path="create-user" element={<CreateUser />} />
+
+            <Route path="projects" element={<Projects />} />
+            <Route path="edit-project" element={<EditProject />} />
+            <Route path="delete-project" element={<DeleteProject />} />
+            <Route path="create-project" element={<CreateProject />} />
+
+            <Route path="datasets" element={<DataSets />} />
+            <Route path="edit-dataset" element={<EditDataSet />} />
+            <Route path="delete-dataset" element={<DeleteDataSet />} />
+            <Route path="create-dataset" element={<CreateDataSet />} />
+
+            <Route path="profiling" element={<Profiling />} />
+            <Route path="validate" element={<Validation />} />
           </Route>
         </Routes>
       </BrowserRouter>

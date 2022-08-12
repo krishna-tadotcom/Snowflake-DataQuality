@@ -4,7 +4,7 @@ import { Layout } from "antd";
 
 const { Header, Content } = Layout;
 
-export default function MainContainer() {
+export default function Container() {
   return (
     <Layout className="layout">
       <Header style={{ padding: "0" }}>
@@ -19,10 +19,5 @@ export default function MainContainer() {
         </div>
       </Content>
     </Layout>
-
-    // <div>
-    //   <Navigation />
-    //   <Outlet />
-    // </div>
   );
 }

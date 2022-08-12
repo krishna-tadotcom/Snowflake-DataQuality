@@ -1,7 +1,5 @@
+import { Card, Col, Row } from "antd";
 import React from "react";
-// import 'antd/dist/antd.css';
-import { Button, Input, Select, Row, Col, Card, Avatar } from "antd";
-import "./dataSet.css";
 
 const dataSetsList = [
   {
@@ -61,7 +59,7 @@ const dataSetsList = [
 ];
 
 const { Meta } = Card;
-const DataSetsList = () => {
+const dataSets = () => {
   return (
     <>
       <Row justify="center" gutter={[32, 32]}>
@@ -113,7 +111,7 @@ const DataSetsList = () => {
   );
 };
 
-export default DataSetsList;
+export default dataSets;
 
 {
   /* <Row gutter={16}>

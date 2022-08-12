@@ -1,8 +1,6 @@
 
 import { Col, Row } from "antd";
-import "antd/dist/antd.css";
 import React from "react";
-import "./index.css";
 
 const DataSourceCard = () => {
   return (

@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-// import 'antd/dist/antd.css';
-// import './index.css';
 import { DownOutlined } from "@ant-design/icons";
-import { Menu, Dropdown, Icon } from "antd";
+import { Menu } from "antd";
+import React, { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 const items = [
   {
@@ -123,52 +120,20 @@ const items = [
     key: "profiling",
     children: [
       {
-        label: "Data Source Name",
-        key: "setting:1",
-      },
-      {
-        label: "Database",
-        key: "setting:2",
-      },
-      {
-        label: "Schema",
-        key: "setting:3",
-      },
-      {
-        label: "Table",
-        key: "setting:4",
-      },
-      {
-        label: "Column",
-        key: "setting:4",
+        label: "Profiling",
+        key: "profiling",
       },
     ],
   },
   {
     label: <>Validation &nbsp;</>,
     key: "validation",
-    // children: [
-    //   {
-    //     label: "Data Source Name",
-    //     key: "setting:1",
-    //   },
-    //   {
-    //     label: "Database",
-    //     key: "setting:2",
-    //   },
-    //   {
-    //     label: "Schema",
-    //     key: "setting:3",
-    //   },
-    //   {
-    //     label: "Table",
-    //     key: "setting:4",
-    //   },
-    //   {
-    //     label: "Column",
-    //     key: "setting:4",
-    //   },
-    // ],
+    children: [
+      {
+        label: "Validate",
+        key: "validate",
+      },
+    ],
   },
   //   {
   //     label: (
@@ -183,41 +148,70 @@ const items = [
 const Navigation = () => {
   const [current, setCurrent] = useState("users");
   const navigate = useNavigate();
-  // const [connectionList, setConnectionList] = useState([]);
 
   const onClick = (e) => {
     console.log("Navigation clicked on:", e);
     setCurrent(e.key);
     switch (e.key) {
-      case "connection_list":
-        navigate("connectionlist");
+      case "users_create":
+        navigate("create-user");
+        break;
+      case "users_delete":
+        navigate("delete-user");
+        break;
+      case "users_edit":
+        navigate("edit-user");
+        break;
+      case "users_List":
+        navigate("users");
         break;
       case "project_create":
-        navigate("createProject");
+        navigate("create-project");
+        break;
+      case "project_delete":
+        navigate("delete-project");
+        break;
+      case "project_edit":
+        navigate("edit-project");
         break;
       case "project_list":
-        navigate("projectslist");
+        navigate("projects");
+        break;
+      case "connection_create":
+        navigate("create-connection");
+        break;
+      case "connection_delete":
+        navigate("delete-connection");
+        break;
+      case "connection_edit":
+        navigate("edit-connection");
+        break;
+      case "connection_list":
+        navigate("connections");
         break;
       case "dataset_create":
-        navigate("createdataset");
+        navigate("create-dataset");
+        break;
+      case "dataset_delete":
+        navigate("delete-dataset");
+        break;
+      case "dataset_edit":
+        navigate("edit-dataset");
         break;
       case "dataset_list":
-        navigate("datasetlist");
+        navigate("datasets");
+        break;
+      case "profiling":
+        navigate("profiling");
+        break;
+      case "validate":
+        navigate("validate");
         break;
       default:
         navigate("/");
     }
-
-    // if (e.key === "connection_list") {
-    //   navigate("connectionlist");
-    // } else if (e.key === "project_create") {
-    //   navigate("createProject");
-    // } else if (e.key === "project_list") {
-    //   navigate("projectslist");
-    // }
   };
 
-  useEffect(() => {}, []);
   return (
     <Menu
       onClick={onClick}

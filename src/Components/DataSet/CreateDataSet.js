@@ -1,8 +1,6 @@
-import React, { useState } from "react";
-// import 'antd/dist/antd.css';
+import { Button, Input, Select } from "antd";
+import React from "react";
 import "./dataSet.css";
-import { DownOutlined, UpOutlined } from "@ant-design/icons";
-import { Button, Col, Form, Input, Row, Select, Checkbox } from "antd";
 
 const { Option } = Select;
 

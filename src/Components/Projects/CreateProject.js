@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Input, Modal } from "antd";
-// import projects from "./projects";
 
-const ProjectsList = () => {
+const CreateProject = () => {
   const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
@@ -26,10 +25,6 @@ const ProjectsList = () => {
         okText="Submit"
         cancelText="Cancel"
       >
-        {/* <p>
-          Project ID:
-          <Input placeholder="Basic usage" />
-        </p> */}
         <p>
           <Input placeholder="Project Name.." />
         </p>
@@ -41,4 +36,4 @@ const ProjectsList = () => {
   );
 };
 
-export default ProjectsList;
+export default CreateProject;
