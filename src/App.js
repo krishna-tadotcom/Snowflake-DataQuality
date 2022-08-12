@@ -1,126 +1,46 @@
-import React, { useState } from 'react'
-import './App.css'
-import Data from './mock-data.json'
-import Select from 'react-select'
-import MenuBar from './MenuBar'
-import 'antd/dist/antd.css';
-import Drop2 from './Drop2'
-import './Drop2.css';
-
-// import DropDown from './DropDown';
-
-
+import React from "react";
+// import Tables from "./Components/Tables/Tables";
+import "antd/dist/antd.min.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import ConnectionsList from "./Components/ConnectionsList/ConnectionsList";
+import ProjectsList from "./Components/ProjectsList/ProjectsList";
+import CreateProject from "./Components/ProjectsList/CreateProject";
+import CreateDataSet from "./Components/DataSet/CreateDataSet";
+import DataSetsList from "./Components/DataSet/DataSetsList";
+import Layout from "./Components/MainContainer/MainContainer";
+// import { Layout } from "antd";
+// import "./Drop2.css";
 
 const App = () => {
-
-    const [data,setData]=useState(Data);
   return (
-    <div className='app-container' >
-        <div className='relative'>
-        <div>
-        <MenuBar/> <br/>
-        </div>
-        <div className='cardContainer'>
-        <div className='card'>
-        <label>DS Name</label>
-        
-        <Drop2  name={"DS Name"} items={["DS1","DS2","DS3"]} className="dropDown"/> 
-        <button > Connect</button>
-        
-        </div>
+    <div>
+      {/* <BrowserRouter>
+        <Routes>
+          <Route path="/" exact element={<Navigation />} />
+          <Route
+            path="/create-connection"
+            exact
+            element={<CreateConnection />}
+          />
+        </Routes>
+      </BrowserRouter> */}
 
-      
-        <div className='card'>
-        <label>Databases</label>
-        <Drop2  name={"Databases"} items={["DB1","DB2","DB3"]} /> 
-        </div>
-        <div className='card'>
-        <label>Schema</label>
-        <Drop2  name={"Schema"} items={["S1","S2","S3"]} /> 
-        </div>
-       
-  
-        
-        <div className='card'>
-        <label>Tables</label>
-        <Drop2  name={"Table"} items={["T1","T2","T3"]}/> 
-        <button  > Sample Data</button>
-        </div>
-
-        <div className='card'>
-        <label>Columns</label>
-        <Drop2  name={"Columns"} items={["C1","C2","C3"]}/> 
-        <button  > Profile</button>
-        </div>
-        
-        {/* <button className='buttonSpace'> Profile</button> */}
-        </div>
-        </div>
-        
-       
-       <table>
-          <thead>
-            <tr>
-                <th> Data Source</th>
-                <th> DS Name</th>
-                <th> User Name</th>
-                <th> Account Name</th>
-                <th> Database Name</th>
-                <th> Schema</th>
-                <th> Password </th>
-            </tr>
-          </thead>
-          <tbody>
-            {Data.map((dat)=>(
-                <tr>
-                <td> {dat.DataSource}</td>
-                <td> {dat.DSName}</td>
-                <td> {dat.UserName}</td>
-                <td> {dat.AccountName}</td>
-                <td> {dat.DatabaseName}</td>
-                <td> {dat.Schema}</td>
-                <td>{dat.Password}</td>
-            </tr>
-
-            ))}
-            
-                
-          </tbody>
-       </table> <br/>
-
-       <table>
-          <thead>
-            <tr>
-                <th> Data Source</th>
-                <th> DS Name</th>
-                <th> User Name</th>
-                <th> Account Name</th>
-                <th> Database Name</th>
-                <th> Schema</th>
-                <th> Password </th>
-            </tr>
-          </thead>
-          <tbody>
-            {Data.map((dat)=>(
-                <tr>
-                <td> {dat.DataSource}</td>
-                <td> {dat.DSName}</td>
-                <td> {dat.UserName}</td>
-                <td> {dat.AccountName}</td>
-                <td> {dat.DatabaseName}</td>
-                <td> {dat.Schema}</td>
-                <td>{dat.Password}</td>
-            </tr>
-
-            ))}
-            
-                
-          </tbody>
-       </table>
-
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<h1>Home Page </h1>} />
+            <Route path="connectionlist" element={<ConnectionsList />} />
+            <Route path="projectslist" element={<ProjectsList />} />
+            <Route path="CreateProject" element={<CreateProject />} />
+            <Route path="ProjectDelete" element={<CreateProject />} />
+            <Route path="createdataset" element={<CreateDataSet />} />
+            <Route path="datasetlist" element={<DataSetsList />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
-  )
-}
+  );
+};
 
-export default App
-
+export default App;

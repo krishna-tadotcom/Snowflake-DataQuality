@@ -1,0 +1,30 @@
+.create-dateset-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-dateset-container .dateset-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.create-dateset-container .dateset-row > .dataset-item {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.create-dateset-container .dataset-footer {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-inline: 4rem;
+}
+
+.create-dateset-container .dataset-footer > * {
+  margin-left: 1rem;
+  padding-inline: 1rem;
+  display: inline-block;
+  width: fit-content;
+}
