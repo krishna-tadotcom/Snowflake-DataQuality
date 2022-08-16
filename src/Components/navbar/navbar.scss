@@ -1,0 +1,58 @@
+.navbar {
+  
+  height: 60px !important;
+ 
+  display: flex;
+  align-items: center;
+  transform: translateY(-30px);
+  
+  color: #555;
+
+  .wrapper {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    
+    
+ 
+
+    
+
+    .items {
+      display: flex;
+      align-items: center;
+      transform: translateY(5px);
+      margin-left: 20px;
+
+
+      .item {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        position: relative;
+        font-size: 10px;
+        text-transform: capitalize;
+        margin-left: 0;
+        cursor: pointer;
+        font-weight: bolder;
+
+        // .icon {
+        //   font-size: 20px;
+        // }
+
+        // .avatar {
+        //   width: 30px;
+        //   height: 30px;
+        //   border-radius: 50%;
+        // }
+        &:hover{
+          color: rgb(69, 145, 178);
+          border-bottom: 2px solid rgb(69, 145, 178);
+        }
+
+        
+      }
+    }
+  }
+}

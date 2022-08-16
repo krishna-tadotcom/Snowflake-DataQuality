@@ -1,0 +1,71 @@
+.cover .loader {
+  width: 40px;
+  height: 40px;
+  border-top: 2px solid #0cc45c;
+  -webkit-animation-name: spin;
+          animation-name: spin;
+  -webkit-animation-duration: 0.9s;
+          animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  border-radius: 50%;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    border-top: 2px solid #0cc45c;
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    border-top: 2px solid #28cfd5;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    border-top: 2px solid #b4ce22;
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+    border-top: 2px solid #0cc45c;
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg);
+    border-top: 2px solid #28cfd5;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    border-top: 2px solid #b4ce22;
+  }
+}
+
+.cover p {
+  color: #070707;
+  font-weight: 900;
+  text-transform: capitalize;
+  font-size: 19px;
+  border-bottom: 1px dotted green;
+  width: 100%;
+  text-align: center;
+  margin-left: 20px;
+}
+
+.cover input[type="number"] {
+  padding: 10px;
+}
+
+.cover input[type="number"]:focus {
+  outline: none;
+  border: 1px solid #00ff26 !important;
+}
+/*# sourceMappingURL=validation.css.map */

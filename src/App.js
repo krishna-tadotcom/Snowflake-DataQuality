@@ -24,7 +24,10 @@ import EditDataSet from "./Components/DataSet/EditDataSet";
 import DeleteDataSet from "./Components/DataSet/DeleteDataSet";
 
 import Profiling from "./Components/Profiling/Profiling";
-import Validation from "./Components/Validation/Validation";
+import Validation from "./pages/Validation_home/Home";
+import Sidebar from './Components/sidebar/Sidebar'
+import Saved from './Components/saved/Saved'
+import Navbar from './Components/navbar/Navbar'
 
 import "./App.css";
 import "antd/dist/antd.min.css";
@@ -33,9 +36,15 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
+      <div className="home">
+        {/* <Sidebar /> */}
+        <div className="homeContainer">
+          {/* <Navbar /> */}
+          <div >
         <Routes>
-          <Route path="/" element={<Container />}>
-            <Route index element={<Home />} />
+          <Route path='/' element={<Container />}>
+           
+           <Route index element={<Home />} />
             <Route path="connections" element={<Connections />} />
             <Route path="edit-connection" element={<EditConnection />} />
             <Route path="delete-connection" element={<DeleteConnection />} />
@@ -57,9 +66,14 @@ const App = () => {
             <Route path="create-dataset" element={<CreateDataSet />} />
 
             <Route path="profiling" element={<Profiling />} />
-            <Route path="validate" element={<Validation />} />
+           
+            <Route path="/validate" element={<Validation />} />
+            <Route path='/saved' element={<Saved />} />
           </Route>
         </Routes>
+        </div>
+        </div>
+        </div>
       </BrowserRouter>
     </div>
   );
