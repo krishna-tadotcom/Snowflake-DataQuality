@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Button, Modal, List, Skeleton, Avatar } from "antd";
-import axios from "axios";
+import { getProjects } from "../../webRequests/api.services";
 
 const Projects = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({});
   const [initLoading, setInitLoading] = useState(true);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [list, setList] = useState([]);
   useEffect(() => {
-    axios
-      .get(
-        "http://ec2-54-197-121-247.compute-1.amazonaws.com:5000/project-list"
-      )
-      .then((res) => {
-        setInitLoading(false);
-        setData(res);
-        setList(res);
-      });
+    getProjects().then((res) => {
+      setInitLoading(false);
+      setData(res);
+      setList(res);
+    });
   }, []);
 
   // const onLoadMore = () => {
@@ -102,7 +98,6 @@ const Projects = () => {
               />
               {/* <div>{item.project_id}</div> */}
             </Skeleton>
-            
           </List.Item>
         )}
       />

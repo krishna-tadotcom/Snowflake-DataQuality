@@ -11,12 +11,7 @@ export default function Container() {
         <Navigation />
       </Header>
       <Content style={{ padding: "20px 100px", minHeight: "100vh" }}>
-        <div
-          className="site-layout-content"
-          style={{ overflow: "auto", minHeight: "30rem" }}
-        >
-          <Outlet />
-        </div>
+        <Outlet />
       </Content>
     </Layout>
   );
