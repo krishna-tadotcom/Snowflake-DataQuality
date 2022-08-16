@@ -9,7 +9,7 @@ const items = [
     label: (
       <>
         Users &nbsp;
-        <DownOutlined />
+        <i class="fa-solid fa-angle-down"></i>
       </>
     ),
     key: "users",
@@ -38,7 +38,7 @@ const items = [
     label: (
       <>
         Project &nbsp;
-        <DownOutlined />
+        <i class="fa-solid fa-angle-down"></i>
       </>
     ),
     key: "project",
@@ -65,7 +65,7 @@ const items = [
     label: (
       <>
         Connections &nbsp;
-        <DownOutlined />
+        <i class="fa-solid fa-angle-down"></i>
       </>
     ),
     key: "connections",
@@ -92,7 +92,7 @@ const items = [
     label: (
       <>
         Dataset &nbsp;
-        <DownOutlined />
+        <i class="fa-solid fa-angle-down"></i>
       </>
     ),
     key: "dataset",
@@ -116,7 +116,8 @@ const items = [
     ],
   },
   {
-    label: <>Profiling &nbsp;</>,
+    label: <>Profiling &nbsp; <i class="fa-solid fa-angle-down"></i></>,
+
     key: "profiling",
     children: [
       {
@@ -126,7 +127,7 @@ const items = [
     ],
   },
   {
-    label: <>Validation &nbsp;</>,
+    label: <>Validation &nbsp; <i class="fa-solid fa-angle-down"></i></>,
     key: "validation",
     children: [
       {

@@ -17,7 +17,7 @@ const CreateConnection = () => {
         span: 8,
       }}
       wrapperCol={{
-        span: 16,
+        span: 10,
       }}
       initialValues={{
         remember: true,
