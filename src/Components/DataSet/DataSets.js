@@ -65,45 +65,35 @@ const dataSets = () => {
       <Row justify="center" gutter={[32, 32]}>
         {dataSetsList.map((item) => (
           <Col span={8}>
-            <Card
-              style={{
-                width: 300,
-                marginTop: 16,
-              }}
-              loading={false}
-              title={item.dsname}
-              bordered={false}
-            >
-              {/* <Meta
-                avatar={<Avatar src="https://joeschmoe.io/api/v1/random" />}
-                title="Card title"
-                description="This is the description"
-              /> */}
-              <p>
-                <b>DB Name: </b>
+           <Card variant="outlined">
+           <div>
+                <span>DB Name: </span>
                 {item.dbname}
-              </p>
-              <p>
-                <b>DB Source: </b>
+              </div>
+              <div>
+                <span>DB Source: </span>
                 {item.source}
-              </p>
-              <p>
-                <b>Project: </b>
+              </div>
+              <div>
+                <span>Project: </span>
                 {item.project}
-              </p>
-              <p>
-                <b>Schema: </b>
+              </div>
+              <div>
+                <span>Schema: </span>
                 {item.schema}
-              </p>
-              <p>
-                <b>Table: </b>
+              </div>
+              <div>
+                <span>Table: </span>
                 {item.table}
-              </p>
-              <p>
-                <b>Created Date: </b>
+              </div>
+              <div>
+                <span>Created Date: </span>
                 {item.createdDate.toLocaleDateString()}
-              </p>
-            </Card>
+              </div>
+           </Card>
+             
+              
+            
           </Col>
         ))}
       </Row>

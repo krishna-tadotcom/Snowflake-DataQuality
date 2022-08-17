@@ -11,8 +11,9 @@ import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
 import { TextField } from "@mui/material";
 import { Search } from "js-search";
+import { useNavigate } from "react-router";
 
-const Saved = () => {
+const Saved = ({}) => {
   const [pageN, setPage] = useState(8)
   const [load, setLoad] = useState(false)
   const [rows, setRows] = useState([]);
@@ -31,7 +32,9 @@ const Saved = () => {
 
 
 
-  }, [])
+  }, [localStorage.getItem('savedData')])
+
+
   useEffect(() => {
     setSearch([...rows])
   }, [rows])
@@ -82,7 +85,7 @@ const Saved = () => {
 
     if (Math.ceil(sc) === s) {
 
-      setPage(pageN + 1)
+      setPage(pageN + 10)
       setLoad(false)
 
     }
@@ -108,12 +111,14 @@ const Saved = () => {
 
 
 
-
+ const navigate = useNavigate()
 
   const edit = (id) => {
     const data = rows.filter(r => r.id === id)
-    console.log(data[0].column)
+    navigate(`/editSaved/${id}`)
+    // showEditPop(data[0].ProjectName,data[0].Dataset,data[0].column,data[0].Expectation,data[0].inputs)
   }
+
   const deletion = (id) => {
     const rows = JSON.parse(localStorage.getItem('savedData'))
     const data = rows.filter(r => r.id !== id)
@@ -132,7 +137,7 @@ const Saved = () => {
 
         <input className="in" placeholder="Search by columns..." autoComplete="off" type="text" name="search" value={se} onChange={changeSe} />
         <select onChange={selecting} style={{
-          padding: "10px", border: "none", borderBottom: "2px solid rgb(114, 111, 111)", outline: "none"
+          padding: "10px", border: "none", borderBottom: "2px solid rgb(114, 111, 111)", outline: "none",marginBottom:"5px"
         }}>
           <option>Paginate</option>
           <option value="8">8</option>
@@ -141,16 +146,18 @@ const Saved = () => {
         </select>
       </div>
 
-      <TableContainer component={Paper} className="table">
+      <TableContainer component={Paper} className="table ">
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow className="t">
-              <TableCell className="tableCell head">ID</TableCell>
-              <TableCell className="tableCell head">COLUMNS</TableCell>
-              <TableCell className="tableCell head">EXPECTATIONS</TableCell>
-              <TableCell className="tableCell head">INPUTS</TableCell>
-              <TableCell className="tableCell head">EDIT</TableCell>
-              <TableCell className="tableCell head">DELETE</TableCell>
+              <TableCell className="tableCell head">Id</TableCell>
+              <TableCell className="tableCell head">Columns</TableCell>
+              <TableCell className="tableCell head">Expectation</TableCell>
+              <TableCell className="tableCell head">ProjectName</TableCell>
+              <TableCell className="tableCell head">Datasets</TableCell>
+              <TableCell className="tableCell head">Inputs</TableCell>
+              <TableCell className="tableCell head">Edit</TableCell>
+              <TableCell className="tableCell head">Delete</TableCell>
 
             </TableRow>
           </TableHead>
@@ -158,15 +165,18 @@ const Saved = () => {
             {search.map((row, index) => (
 
               <>
-                {index < pageN && <TableRow key={row.id}>
+                {index < pageN && 
+                <TableRow key={row.id} style={{height:"1px" ,paddingBottom:"-100px"}}>
                   <TableCell className="tableCell bo">{row.id}</TableCell>
 
                   <TableCell className="tableCell bo">{row.column}</TableCell>
 
                   <TableCell className="tableCell bo">{row.Expectation}</TableCell>
-                  <TableCell className="tableCell">
+                  <TableCell className="tableCell bo">{row.ProjectName}</TableCell>
+                  <TableCell className="tableCell bo">{row.Dataset}</TableCell>
+                  <TableCell className="tableCell" style={{display:"flex",gap:"2px"}}>
                   
-                    {row.inputs[0].map((i)=><p>{i}</p>)}
+                    {row.inputs.map((i)=><h>{i},</h>)}
                   
                   </TableCell>
                   <TableCell className="tableCell">

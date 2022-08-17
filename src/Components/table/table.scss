@@ -18,7 +18,7 @@ margin-right: 12px !important;
 }
 .table {
   .bo{
-    font-weight: 600;
+    font-weight: 100 !important;
     font-size: 10px !important;
     color: rgb(114, 111, 111);
     .col{
@@ -69,9 +69,9 @@ margin-right: 12px !important;
    
   }
   .head{
-    font-weight: 600;
+    font-weight: 600 !important;
     color: #000000;
-    font-size: 12px;
+    font-size: 14px !important;
     text-transform: capitalize;
   }
   .cellWrapper {

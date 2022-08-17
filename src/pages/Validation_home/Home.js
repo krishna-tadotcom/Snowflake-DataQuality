@@ -14,17 +14,21 @@ import { useEffect, useState } from "react";
 import { Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useNavigate } from "react-router";
 import Validation from "../../Components/validation/Validation";
+import Saved from '../../Components/saved/Saved'
 // added home
 
 
 
 
 
-const Home = () => {
+const Home = ({setRouteName}) => {
 
+  
+  
   //number of inputs in validation
   const [NumberOfInputs,setNumber] = useState(0)
 
+  const [inputsEdit,setInputsEdit] = useState([])
 
   const [projectName, setProjectname] = useState('')
   
@@ -59,14 +63,19 @@ const Home = () => {
   
 
   // storing the column data
-  const [colArray, setColArray] = useState([])
-  const [expArray, setExpArray] = useState([])
+  // const [colArray, setColArray] = useState('')
+  // const [expArray, setExpArray] = useState('')
 
 
   // storing expectation and column value
   const [col,setCol]  = useState('')
   const [exp,setExp]  = useState('')
 
+
+  const [pop,setPop] = useState('')
+
+
+  //getting data in the db
 
 
 
@@ -84,32 +93,78 @@ const Home = () => {
 
     setColumnHeader(['columns'])
     setExpectationHeader(['Expectation'])
-    setExprow(["Expectation1", "Expectation2", "Expectation3", "Expectation4", "Expectation5"])
+    setExprow(["Expectation1", "Expectation2", "Expectation3", "Expectation4", "Expectation5","Expectation6"])
     
 
   }
 
-  const showPop = (index) => {
-    document.documentElement.scrollTop = 0;
 
-    setCol(colArray[index])
-    setExp(expArray[index])
-    document.querySelector('.pop').classList.toggle('tran')
-    document.querySelector('#overf').classList.toggle('overf')
-    if(exp!==undefined){
-      setNumber(+exp.charAt(exp.length-1))
+  
+  // const showEditPop = (P,d,c,e,i) => {
+  //   if(pop === 'norm'){
+  //     setPop('cross')
+  //   }
+  //   else{
+  //     setPop('norm')
+  //   }
+
+  //   if(P!=='' && d!=='' && c!=='' && e!==''){
+  //     setPop('')
+  //     setCol(c)
+  //     setExp(e)
+  //     setDataset(d)
+  //     setProjectname(P)
+  //     setInputsEdit(i[0])
+      
+  //   }
+   
+  // }
+ useEffect(()=>{
+  console.log(inputsEdit)
+ },[inputsEdit])
+
+  const showPop = () => {
+    if(pop === 'norm'){
+      setPop('cross')
+    }
+    else{
+      setPop('norm')
     }
 
+    
+
+
+
+    document.documentElement.scrollTop = 0;
+    
+   
+    document.querySelector('.pop').classList.toggle('tran')
+    
+    document.querySelector('#overf').classList.toggle('overf')
+    
+
   }
+  useEffect(()=>{
+    if(exp!==undefined || col!==undefined){
+      setNumber(+exp.charAt(exp.length-1))
+    }
+  },[col,exp])
+
+
 
   // saving into local or api
   const saveData = (inputs) => {
+
+
+
+
     const data = {
       "id": Math.floor(Math.random() * 1000) + 1,
       "column": col,
       "Expectation": exp,
-      "Database": projectName,
-      "inputs":[inputs]
+      "ProjectName": projectName,
+      "Dataset":dataset,
+      "inputs":inputs
     }
    
     if(!localStorage.getItem('savedData')){
@@ -121,17 +176,39 @@ const Home = () => {
       const local = [...JSON.parse(localStorage.getItem('savedData')), data]
       localStorage.setItem('savedData', JSON.stringify(local))
     }
+    
+
     document.querySelector('#overf').classList.toggle('overf')
     document.querySelector('.pop').classList.toggle('tran')
     document.querySelector('#overf').classList.remove('overf')
+    setPop('')
+    setCol('')
+    setExp('')
+
     navigate('/validate')
 
   }
 
-  useEffect(()=>{
+
+
+
   
 
+  useEffect(()=>{
+  if(exp!=='' && col!==''){
+    showPop()
+    
+  }
+
   },[col,exp])
+  useEffect(()=>{
+    
+    if(pop==='cross'){
+      setCol('')
+      setExp('')
+    }
+  
+  },[pop])
 
 
 
@@ -144,7 +221,7 @@ const Home = () => {
       
       <div className="homeContainer">
 
-        <div className="d">
+       
 
 
           <div className="innerD">
@@ -182,56 +259,29 @@ const Home = () => {
 
 
             </div>
-            <div>
-              {colArray.length !== 0 && 
-              
-                <table className="tb">
-               
-                {colArray.map((row,index)=>(
-                  <tbody className="bg-dark p-1 mb-2" style={{position:"relative"}} >
-                   
-                    <tr>
-                      <td style={{marginTop:"-5px",marginLeft:"10px",color:"white"}}>
-                        {row}
+            
 
-                      </td>
-                      <td style={{marginTop:"-5px",color:"white",position:"absolute",left:"180px"}}>{expArray[index]}</td>
-                      <td style={{marginTop:"-5px",color:"white",position:"absolute",left:"380px"}}>{projectName}</td>
-                      <td style={{marginTop:"-5px",color:"white",position:"absolute",left:"580px"}}>{dataset}</td>
-                      <td style={{marginTop:"-10px"}}>
-                      {expArray[index] &&<Button 
-                        onClick={(e)=>{showPop(index)}}>Run</Button>}
-                        </td>
-
-                    </tr>
-                    </tbody>
-                  
-                   ))}
-                  
-
-
-                </table>
-              
-
-              }
-            </div>
-
-          {dataset &&   <div style={{ width: "900px", marginLeft: "100px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <Table header={columnHeader} data={rows} w="180px" setColArray={setColArray} />
+          {dataset &&   <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center",gap:"70px" }}>
+              <Table header={columnHeader} data={rows} w="180px" setCol={setCol} />
               <Table header={ExpectationHeader} data={
                 expRows
-              } w="230px" setExpArray={setExpArray} />
+              } w="230px" setExp={setExp} />
             </div>}
-            <div class="pop">
+            <div>
+             <Saved />
+            </div>
+            <div className="pop">
               <div style={{ width: "100%" }} className="inpop">
-                <div className="vali">
-                  <i className="fa-solid fa-xmark" onClick={showPop}></i>
-                  <Validation  saveData={saveData} number={NumberOfInputs}/></div>
+                
+                 
+                  <Validation showPop={showPop} saveData={saveData} number={NumberOfInputs} projectName={projectName} exp={exp} col={col} dataset={dataset}
+                  inputsEdit={inputsEdit}
+                  />
               </div>
             </div>
           </div>
         </div>
-      </div>
+      
     </div>
   );
 };

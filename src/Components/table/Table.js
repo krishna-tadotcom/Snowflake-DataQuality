@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { TextField } from "@mui/material";
 import { Search } from "js-search";
 
-const List = ({ header, data, w, setColArray,setExpArray }) => {
+const List = ({ header, data, w, setCol,setExp }) => {
   const [pageN, setPage] = useState(2)
   const [load, setLoad] = useState(false)
  
@@ -32,7 +32,7 @@ const List = ({ header, data, w, setColArray,setExpArray }) => {
             <TableRow className="t">
 
               {header.map(h => (
-                <TableCell className="tableCell head" style={{ paddingLeft: "60px" }}>
+                <TableCell className="tableCell head" style={{ padding: "8px 60px" }}>
                 {h}
                 </TableCell>
               ))}
@@ -55,11 +55,11 @@ const List = ({ header, data, w, setColArray,setExpArray }) => {
 
                 <TableRow>
 
-                  {header[0] === 'columns' ? <TableCell className="tableCell bo"
+                  {header[0] === 'columns' ? <TableCell className="tableCell bo" style={{padding: "2px 25px",width:"100%"}}
                     
                     onClick={(e) => {
                       if (e.target.className === 'col') {
-                        setColArray(prev=>[...prev,e.target.innerHTML])
+                        setCol(e.target.innerHTML)
                       }
                     }}>
 
@@ -71,10 +71,10 @@ const List = ({ header, data, w, setColArray,setExpArray }) => {
                     :
                     
                       <TableCell className="tableCell bo"
-                        style={{ cursor: "pointer" }}
+                        style={{ cursor: "pointer" ,padding: "2px 30px"}}
                         onClick={(e) => {
                           if (e.target.className === 'col') {
-                            setExpArray(prev=>[...prev,e.target.innerHTML])
+                            setExp(e.target.innerHTML)
                             
                           }
                         }}>

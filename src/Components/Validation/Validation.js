@@ -6,7 +6,7 @@ import FormContainer from '../FormContainer'
 import './validation.scss'
 
 
-const Validation = ({saveData,number}) => {
+const Validation = ({saveData,number,showPop,projectName,exp,col,dataset}) => {
     const [inArray,setInArray] = useState([])
     const [input1, setInput1] = useState(0)
     const [input2, setInput2] = useState(0)
@@ -16,7 +16,7 @@ const Validation = ({saveData,number}) => {
         // you can call the api for validate
         setLoad(true)
 
-        console.log(input1,input2)
+        
        setTimeout(()=>{
         
         setLoad(false)
@@ -26,13 +26,9 @@ const Validation = ({saveData,number}) => {
         setInput2('')
        },3000)
     }
+    
 
-    useEffect(()=>{
-
-        for(let i=0;i<number;i++){
-            setInArray(arr=>[...arr,1])
-        }
-    },[number])
+   
 
  
   
@@ -44,6 +40,19 @@ const Validation = ({saveData,number}) => {
             <FormContainer>
                     <Form>
                     <p>Enter the inputs</p>
+                    <div style={{display:"flex",justifyContent:"space-between",marginLeft:"20px",marginBottom:"10px"}}>
+                        <div style={{textTransform:"capitalize"}}>{projectName}</div>
+                        <div style={{textTransform:"capitalize"}}>{dataset}</div>
+                        
+                    </div>
+                    <div style={{display:"flex",justifyContent:"space-between",marginLeft:"20px"}}>
+                        <div style={{textTransform:"capitalize"}}>{col}</div>
+                        <div style={{textTransform:"capitalize"}}>{exp}</div>
+                        
+                    </div>
+                    <div>
+
+                    </div>
                     <input  type="number" value={input1}  required 
                         onChange={(e) => {
                             setInput1(e.target.value)
@@ -69,7 +78,7 @@ const Validation = ({saveData,number}) => {
                     onClick={handleInputs}
                     >Save</Button>
                     :
-                  <div className='loader m-auto'>Loading</div>
+                  <div className='loader m-auto'></div>
                     )
                     :
 
@@ -81,6 +90,11 @@ const Validation = ({saveData,number}) => {
                     >Please Enter Inputs</Button>
                     }
                     </Form>
+                    <i className="fa-solid fa-xmark" onClick={showPop} style={{cursor:"pointer",
+                position:"absolute",
+                    right:"0",top:"15px"
+                
+                }}></i>
 
 
 

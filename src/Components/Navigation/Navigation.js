@@ -219,7 +219,7 @@ const Navigation = () => {
       selectedKeys={[current]}
       mode="horizontal"
       items={items}
-      theme="dark"
+      // theme="dark"
       triggerSubMenuAction="hover"
     />
   );

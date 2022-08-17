@@ -28,6 +28,7 @@ import Validation from "./pages/Validation_home/Home";
 import Sidebar from './Components/sidebar/Sidebar'
 import Saved from './Components/saved/Saved'
 import Navbar from './Components/navbar/Navbar'
+import EditValidation from './Components/EditValidation/EditValidation'
 
 import "./App.css";
 import "antd/dist/antd.min.css";
@@ -37,12 +38,12 @@ const App = () => {
     <div>
       <BrowserRouter>
       <div className="home">
-        {/* <Sidebar /> */}
+        <Sidebar />
         <div className="homeContainer">
-          {/* <Navbar /> */}
-          <div >
+          <Navbar />
+          <div style={{padding:"30px"}}>
         <Routes>
-          <Route path='/' element={<Container />}>
+          
            
            <Route index element={<Home />} />
             <Route path="connections" element={<Connections />} />
@@ -69,7 +70,8 @@ const App = () => {
            
             <Route path="/validate" element={<Validation />} />
             <Route path='/saved' element={<Saved />} />
-          </Route>
+            <Route path='/editSaved/:id' element={<EditValidation />}/>
+          
         </Routes>
         </div>
         </div>

@@ -1,18 +1,13 @@
-.navbar {
+
   
-  height: 60px !important;
- 
-  display: flex;
-  align-items: center;
-  transform: translateY(-30px);
-  
-  color: #555;
 
   .wrapper {
     width: 100%;
-    padding: 15px;
+    padding: 15px !important;
     display: flex;
+    margin-left: -12px !important;
     align-items: center;
+    justify-content: center;
     
     
  
@@ -22,6 +17,7 @@
     .items {
       display: flex;
       align-items: center;
+      width: 100%;
       transform: translateY(5px);
       margin-left: 20px;
 
@@ -55,4 +51,4 @@
       }
     }
   }
-}
+
