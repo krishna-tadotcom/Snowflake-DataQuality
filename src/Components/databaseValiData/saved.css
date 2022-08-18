@@ -1,0 +1,139 @@
+.in {
+  float: left;
+  margin-left: 10px;
+  padding: 10px;
+  color: #726f6f;
+  border: 0;
+  border-bottom: 2px solid #726f6f;
+  outline: none;
+  -webkit-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+}
+
+.in:focus {
+  border-bottom: 2px solid #1cb850;
+}
+
+select {
+  float: right;
+  margin-right: 12px !important;
+}
+
+.table .bo {
+  font-weight: 600;
+  font-size: 10px !important;
+  color: #726f6f;
+}
+
+.table .simple {
+  border-top: 0px;
+}
+
+.table .tableCell {
+  font-size: 10px;
+}
+
+.table .tableCell i {
+  -webkit-transition: all ease 0.5s !important;
+  transition: all ease 0.5s !important;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.table .tableCell i:hover {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+.table .tableCell i.del {
+  color: red;
+}
+
+.table .tableCell .boxC {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 2px;
+}
+
+.table .tableCell .boxC .box {
+  height: 15px !important;
+  width: 15px !important;
+  border: 1px solid #726f6f;
+  border-radius: 2px;
+  background-color: #089769;
+}
+
+.table .tableCell.plays .play {
+  font-size: 8px;
+  padding: 5px;
+  background-color: #3d77bd;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.table .tableCell.plays .pause, .table .tableCell.plays .stop {
+  font-size: 8px;
+  padding: 5px;
+  background-color: black;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.table .head {
+  font-weight: 600;
+  color: #000000;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.table .cellWrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.table .cellWrapper .image {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-right: 10px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.table .status {
+  padding: 4px !important;
+  border-radius: 5px;
+}
+
+.table .status.approved {
+  color: white;
+  background-color: #089769;
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.table .status.pending {
+  color: white;
+  background-color: #ebc463;
+  padding: 4px 8px !important;
+  border-radius: 50%;
+}
+
+.table .status.canceled {
+  color: white;
+  background-color: red;
+  padding: 4px 6px !important;
+  border-radius: 50%;
+}
+/*# sourceMappingURL=saved.css.map */

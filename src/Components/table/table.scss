@@ -1,4 +1,22 @@
+::-webkit-scrollbar {
+  
+  width: 5px !important;
+}
 
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 .in{
   float: left;
   margin-left: 10px;
@@ -17,9 +35,10 @@ float:right;
 margin-right: 12px !important;
 }
 .table {
+  overflow-y: auto !important;
   .bo{
     font-weight: 100 !important;
-    font-size: 10px !important;
+    font-size: 1px !important;
     color: rgb(114, 111, 111);
     .col{
       text-transform: capitalize;

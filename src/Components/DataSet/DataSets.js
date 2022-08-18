@@ -1,5 +1,7 @@
+import { Button } from "@mui/material";
 import { Card, Col, Row } from "antd";
 import React from "react";
+import { useNavigate } from "react-router";
 
 const dataSetsList = [
   {
@@ -58,10 +60,16 @@ const dataSetsList = [
   },
 ];
 
+
 const { Meta } = Card;
-const dataSets = () => {
+
+const DataSets = () => {
+
+  const navigate = useNavigate()
+ 
   return (
     <>
+    <Button onClick={e=>navigate('/create-dataset')} style={{float:"right"}}>Add DataSet</Button>
       <Row justify="center" gutter={[32, 32]}>
         {dataSetsList.map((item) => (
           <Col span={8}>
@@ -101,7 +109,7 @@ const dataSets = () => {
   );
 };
 
-export default dataSets;
+export default DataSets;
 
 {
   /* <Row gutter={16}>

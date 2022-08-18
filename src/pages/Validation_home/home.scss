@@ -14,22 +14,22 @@
       
 
         .pop{
-          position: absolute;
-          left:0;
-          top:0;
-          bottom:0;
-          right:0;
-          min-height: 100vh !important;
-          overflow-y: hidden !important;
-          background: black;
-          opacity:1 !important;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          color:white;
-          transition: all ease 0.8s !important;
-          transform: translateY(-2000px);
+          // position: absolute;
+          // left:0;
+          // top:0;
+          // bottom:0;
+          // right:0;
+          // min-height: 100vh !important;
+          // overflow-y: hidden !important;
+          // // background: black;
+          // opacity:1 !important;
+          // display: flex;
+          // flex-direction: column;
+          // justify-content: center;
+          // align-items: center;
+          // color:white;
+          // transition: all ease 0.8s !important;
+          // transform: translate(-600px);
 
           &.tran{
             transform: translateY(0px);

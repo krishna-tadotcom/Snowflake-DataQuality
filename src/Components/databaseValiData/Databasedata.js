@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 
 
 import { useEffect, useState } from "react";
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { Search } from "js-search";
 import { useNavigate } from "react-router";
 
@@ -41,11 +41,7 @@ const Saved = ({}) => {
 
 
 
-const handleSubmit=(e)=>{
-  JSON.parse(localStorage.getItem('savedData')).map(d=>{
-    console.log(d)
-  })
-}
+
 
 
 
@@ -82,35 +78,6 @@ const handleSubmit=(e)=>{
   }
 
 
-  const datas = async () => {
-    const s = document.documentElement.scrollHeight - window.innerHeight
-    const sc = window.scrollY
-
-
-    if (Math.ceil(sc) === s) {
-
-      setPage(pageN + 10)
-      setLoad(false)
-
-    }
-
-
-  }
-
-  if (pageN < rows.length) {
-
-
-    setTimeout(() => {
-      setLoad(true)
-
-      window.addEventListener('scroll', datas)
-
-    }, 1000)
-
-
-
-  }
-
 
 
 
@@ -118,16 +85,16 @@ const handleSubmit=(e)=>{
  const navigate = useNavigate()
 
   const edit = (id) => {
-    const data = rows.filter(r => r.id === id)
-    navigate(`/editSaved/${id}`)
+    // const data = rows.filter(r => r.id === id)
+    // navigate(`/editSaved/${id}`)
     // showEditPop(data[0].ProjectName,data[0].Dataset,data[0].column,data[0].Expectation,data[0].inputs)
   }
 
   const deletion = (id) => {
-    const rows = JSON.parse(localStorage.getItem('savedData'))
-    const data = rows.filter(r => r.id !== id)
-    localStorage.setItem('savedData', JSON.stringify(data))
-    setRows(JSON.parse(localStorage.getItem('savedData')))
+    // const rows = JSON.parse(localStorage.getItem('savedData'))
+    // const data = rows.filter(r => r.id !== id)
+    // localStorage.setItem('savedData', JSON.stringify(data))
+    // setRows(JSON.parse(localStorage.getItem('savedData')))
   }
 
 
@@ -137,7 +104,7 @@ const handleSubmit=(e)=>{
   return (
 
     <>
-      {/* <div>
+       {/* <div>
 
         <input className="in" placeholder="Search by columns..." autoComplete="off" type="text" name="search" value={se} onChange={changeSe} />
         <select onChange={selecting} style={{
@@ -150,18 +117,18 @@ const handleSubmit=(e)=>{
         </select>
       </div> */}
 
-      <TableContainer component={Paper} className="table "
-      //  style={{
-      //   height: "400px",
-      //   display: "inline-block",
-      //   width: "100%",
-      //   overflowX:"scroll"
-       
-        
-      // }}
-      
-      >
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+
+      <TableContainer component={Paper} className="table " 
+      style={{
+              height: "238px",
+              display: "inline-block",
+              width: "800px",
+              overflowX:"scroll"
+             
+              
+            }}
+            >
+        <Table sx={{ minWidth: 650 }} aria-label="simple table" >
           <TableHead>
             <TableRow className="t">
               <TableCell className="tableCell head">Id</TableCell>
@@ -169,13 +136,10 @@ const handleSubmit=(e)=>{
               <TableCell className="tableCell head">Expectation</TableCell>
               <TableCell className="tableCell head">ProjectName</TableCell>
               <TableCell className="tableCell head">Datasets</TableCell>
-              <TableCell className="tableCell head">Test Name</TableCell>
-              <TableCell className="tableCell head">Tags</TableCell>
-
               <TableCell className="tableCell head">Inputs</TableCell>
               <TableCell className="tableCell head">Edit</TableCell>
               <TableCell className="tableCell head">Delete</TableCell>
-
+              <TableCell className="tableCell head">Extra</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -191,11 +155,9 @@ const handleSubmit=(e)=>{
                   <TableCell className="tableCell bo">{row.Expectation}</TableCell>
                   <TableCell className="tableCell bo">{row.ProjectName}</TableCell>
                   <TableCell className="tableCell bo">{row.Dataset}</TableCell>
-                  <TableCell className="tableCell bo">{row.tittle}</TableCell>
-                  <TableCell className="tableCell bo">{row.tag}</TableCell>
-                  <TableCell className="tableCell bo" style={{display:"flex",gap:"2px",marginTop:"15px"}}>
+                  <TableCell className="tableCell" style={{display:"flex",gap:"2px"}}>
                   
-                    {row.inputs.map((i)=><span>{i},</span>)}
+                    {row.inputs.map((i)=><h>{i},</h>)}
                   
                   </TableCell>
                   <TableCell className="tableCell">
@@ -209,13 +171,11 @@ const handleSubmit=(e)=>{
                 </TableRow>}
               </>
             ))}
-
           </TableBody>
         </Table>
 
       </TableContainer>
-      <Button variant="outlined" style={{margin:"0 0 0 50%"}} onClick={handleSubmit}>Save</Button>
-      
+      {load === true && <p style={{ textAlign: "center", padding: "15px" }}>Loading More...</p>}
     </>
   );
 };

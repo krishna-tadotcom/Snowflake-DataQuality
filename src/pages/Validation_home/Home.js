@@ -15,6 +15,7 @@ import { Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRo
 import { useNavigate } from "react-router";
 import Validation from "../../Components/validation/Validation";
 import Saved from '../../Components/saved/Saved'
+import Databasedata from '../../Components/databaseValiData/Databasedata'
 // added home
 
 
@@ -24,7 +25,7 @@ import Saved from '../../Components/saved/Saved'
 const Home = ({setRouteName}) => {
 
   
-  
+  const [showCol,setShowCol] = useState(false)
   //number of inputs in validation
   const [NumberOfInputs,setNumber] = useState(0)
 
@@ -70,6 +71,9 @@ const Home = ({setRouteName}) => {
   // storing expectation and column value
   const [col,setCol]  = useState('')
   const [exp,setExp]  = useState('')
+  const [title,setTitle] = useState('')
+  const [dataQuality,setDataQuality] = useState('')
+  const [tag,setTag] = useState('')
 
 
   const [pop,setPop] = useState('')
@@ -88,12 +92,15 @@ const Home = ({setRouteName}) => {
 
 
   const getData = (e) => {
+    setShowCol(true)
     //fetch api and place response in rows variable using dataset variable
-    setRows(['id', 'email', 'first_name', 'last_name', 'role'])
+    setRows(['id', 'email', 'first_name', 'last_name', 'role','value','time','expire'])
 
     setColumnHeader(['columns'])
     setExpectationHeader(['Expectation'])
-    setExprow(["Expectation1", "Expectation2", "Expectation3", "Expectation4", "Expectation5","Expectation6"])
+    setExprow(["Expectation1", "Expectation2", "Expectation3", "Expectation4", "Expectation5","Expectation6",
+  "Expectation7","Expectation8","Expectation9","Expectation10"
+  ])
     
 
   }
@@ -130,7 +137,10 @@ const Home = ({setRouteName}) => {
     else{
       setPop('norm')
     }
-
+ 
+    setTitle('')
+    setDataQuality('')
+    setTag('')
     
 
 
@@ -138,9 +148,9 @@ const Home = ({setRouteName}) => {
     document.documentElement.scrollTop = 0;
     
    
-    document.querySelector('.pop').classList.toggle('tran')
+
     
-    document.querySelector('#overf').classList.toggle('overf')
+    // document.querySelector('#overf').classList.toggle('overf')
     
 
   }
@@ -160,6 +170,9 @@ const Home = ({setRouteName}) => {
 
     const data = {
       "id": Math.floor(Math.random() * 1000) + 1,
+      "tittle":title,
+      "dataQuality":dataQuality,
+      "tag":tag,
       "column": col,
       "Expectation": exp,
       "ProjectName": projectName,
@@ -178,9 +191,9 @@ const Home = ({setRouteName}) => {
     }
     
 
-    document.querySelector('#overf').classList.toggle('overf')
-    document.querySelector('.pop').classList.toggle('tran')
-    document.querySelector('#overf').classList.remove('overf')
+    // document.querySelector('#overf').classList.toggle('overf')
+    // document.querySelector('.pop').classList.toggle('tran')
+    // document.querySelector('#overf').classList.remove('overf')
     setPop('')
     setCol('')
     setExp('')
@@ -189,7 +202,9 @@ const Home = ({setRouteName}) => {
 
   }
 
-
+useEffect(()=>{
+console.log(title)
+},[title])
 
 
   
@@ -204,8 +219,10 @@ const Home = ({setRouteName}) => {
   useEffect(()=>{
     
     if(pop==='cross'){
+      
       setCol('')
       setExp('')
+     
     }
   
   },[pop])
@@ -255,30 +272,37 @@ const Home = ({setRouteName}) => {
                 }} />
               {projectName && (dataset && <Button variant="outlined" className="getB display-none"  onClick={getData}>Get</Button>)}
 
-
-
+           
 
             </div>
             
-
-          {dataset &&   <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center",gap:"70px" }}>
-              <Table header={columnHeader} data={rows} w="180px" setCol={setCol} />
+            {showCol &&   
+            <div style={{display:"flex"}}>
+              <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center",gap:"30px" }}>
+              <Table header={columnHeader} data={rows} w="170px" setCol={setCol} />
               <Table header={ExpectationHeader} data={
                 expRows
-              } w="230px" setExp={setExp} />
-            </div>}
+              } w="190px" setExp={setExp} />
+            </div>
+            <div style={{flex:"6"}}>
+            <Databasedata />
+            </div>
+              </div>
+            }
+
+        
             <div>
              <Saved />
             </div>
-            <div className="pop">
-              <div style={{ width: "100%" }} className="inpop">
+            
+              {/* <div style={{ width: "100%" }} className="inpop"> */}
                 
                  
                   <Validation showPop={showPop} saveData={saveData} number={NumberOfInputs} projectName={projectName} exp={exp} col={col} dataset={dataset}
-                  inputsEdit={inputsEdit}
+                  inputsEdit={inputsEdit} setTitle={setTitle} setDataQuality={setDataQuality} setTag={setTag} dataQuality={dataQuality} tag={tag} title={title}
                   />
-              </div>
-            </div>
+              {/* </div> */}
+            
           </div>
         </div>
       
