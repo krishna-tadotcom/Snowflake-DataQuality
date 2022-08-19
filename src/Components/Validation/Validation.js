@@ -68,13 +68,13 @@ const Validation = ({saveData,number,showPop,projectName,exp,col,dataset,setTitl
         cancelText="Reset"
       >
        <div style={{display:"flex",justifyContent:"space-between",width:"450px"}}>
-       <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"blue"}}>Dataset:</span> <span style={{textTransform:"capitalize",marginLeft:"5px"}}>{dataset}</span></label> 
-       <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"blue"}}>Column:</span><span style={{textTransform:"capitalize",marginLeft:"5px"}}>{col}</span></label> 
+       <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"black"}}>Dataset:</span> <span style={{textTransform:"capitalize",marginLeft:"5px"}}>{dataset}</span></label> 
+       <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"black"}}>Column:</span><span style={{textTransform:"capitalize",marginLeft:"5px"}}>{col}</span></label> 
        </div>
        <br />
        <div style={{display:"flex",justifyContent:"space-between",width:"450px"}}>
-       <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"blue"}}>Expectation:</span>  <span style={{textTransform:"capitalize",marginLeft:"5px"}}>{exp}</span></label> 
-       <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"blue"}}>Format:</span> <span style={{textTransform:"capitalize",marginLeft:"5px"}}>{exp}</span></label> 
+       <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"black"}}>Expectation:</span>  <span style={{textTransform:"capitalize",marginLeft:"5px"}}>{exp}</span></label> 
+       <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"black"}}>Format:</span> <span style={{textTransform:"capitalize",marginLeft:"5px"}}>{exp}</span></label> 
        </div>
        <hr />
        <p style={{display:"flex"}}>

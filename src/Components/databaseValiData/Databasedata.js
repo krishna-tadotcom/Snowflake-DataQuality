@@ -155,16 +155,16 @@ const Saved = ({}) => {
                   <TableCell className="tableCell bo">{row.Expectation}</TableCell>
                   <TableCell className="tableCell bo">{row.ProjectName}</TableCell>
                   <TableCell className="tableCell bo">{row.Dataset}</TableCell>
-                  <TableCell className="tableCell" style={{display:"flex",gap:"2px"}}>
+                  <TableCell className="tableCell bo" style={{display:"flex",gap:"2px",marginTop:"7.9px",borderTop:"none"}}>
                   
-                    {row.inputs.map((i)=><h>{i},</h>)}
+                    {row.inputs.map((i)=><span>{i},</span>)}
                   
                   </TableCell>
-                  <TableCell className="tableCell">
+                  <TableCell className="tableCell bo">
 
                     <i className="fa-solid fa-pen-to-square edit" onClick={() => { edit(row.id) }}></i>
                   </TableCell>
-                  <TableCell className="tableCell">
+                  <TableCell className="tableCell bo">
                     <i className="fa-solid fa-trash del" onClick={() => { deletion(row.id) }}></i>
                   </TableCell>
 

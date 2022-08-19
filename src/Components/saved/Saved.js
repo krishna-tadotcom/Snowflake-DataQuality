@@ -42,9 +42,7 @@ const Saved = ({}) => {
 
 
 const handleSubmit=(e)=>{
-  JSON.parse(localStorage.getItem('savedData')).map(d=>{
-    console.log(d)
-  })
+  console.log(JSON.parse(localStorage.getItem('savedData')))
 }
 
 
@@ -183,8 +181,8 @@ const handleSubmit=(e)=>{
 
               <>
                 {index < pageN && 
-                <TableRow key={row.id} style={{height:"1px" ,paddingBottom:"-100px"}}>
-                  <TableCell className="tableCell bo">{row.id}</TableCell>
+                <TableRow key={row.id} >
+                  <TableCell className="tableCell bo" >{row.id}</TableCell>
 
                   <TableCell className="tableCell bo">{row.column}</TableCell>
 
@@ -193,16 +191,16 @@ const handleSubmit=(e)=>{
                   <TableCell className="tableCell bo">{row.Dataset}</TableCell>
                   <TableCell className="tableCell bo">{row.tittle}</TableCell>
                   <TableCell className="tableCell bo">{row.tag}</TableCell>
-                  <TableCell className="tableCell bo" style={{display:"flex",gap:"2px",marginTop:"15px"}}>
+                  <TableCell className="tableCell bo " style={{display:"flex",gap:"2px",borderBottom:"none"}}>
                   
                     {row.inputs.map((i)=><span>{i},</span>)}
                   
                   </TableCell>
-                  <TableCell className="tableCell">
+                  <TableCell className="tableCell bo">
 
                     <i className="fa-solid fa-pen-to-square edit" onClick={() => { edit(row.id) }}></i>
                   </TableCell>
-                  <TableCell className="tableCell">
+                  <TableCell className="tableCell bo">
                     <i className="fa-solid fa-trash del" onClick={() => { deletion(row.id) }}></i>
                   </TableCell>
 
