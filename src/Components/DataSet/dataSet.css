@@ -4,16 +4,14 @@
 }
 
 .create-dateset-container .dateset-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   margin-bottom: 2rem;
 }
 
 .create-dateset-container .dateset-row > .dataset-item {
-  flex: 1;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr 2.5fr;
 }
 
 .create-dateset-container .dataset-footer {

@@ -11,7 +11,7 @@ const CreateProject = () => {
   return (
     <>
       <Modal
-        title="Create Project"
+        title="Create New Project"
         centered
         visible={showModal}
         onOk={() => {

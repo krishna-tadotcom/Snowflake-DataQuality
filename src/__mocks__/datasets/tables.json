@@ -1,0 +1,13 @@
+{
+  "table_name": [
+    "TESTRUN_LOG", 
+    "TEST_RESULTS", 
+    "TESTCASE_MASTER", 
+    "ROLES", 
+    "USERS", 
+    "DATASET", 
+    "TESTCASE_DETAILS", 
+    "CONNECTIONS", 
+    "PROJECT"
+  ]
+}

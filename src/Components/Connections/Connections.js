@@ -1,53 +1,15 @@
 import { Table } from "antd";
 import { useEffect, useState } from "react";
-import axios from "axios";
-
-const data = [
-  {
-    connection_id: 3,
-    project_id: 1010,
-    connection_name: "APP",
-    db_name: "metadata",
-    host_name: "ec2-54-197-121-247.compute-1.amazonaws.com",
-    port_name: "5432",
-    conn_username: "developer",
-    conn_password: null,
-    db_connection_type: "postgres",
-    service_name: null,
-    account_name: null,
-    connection_string: null,
-    created_by: 2152.0,
-    schema: null,
-  },
-  {
-    connection_id: 5,
-    project_id: 2020,
-    connection_name: "SNOWFLAKE_TEST",
-    db_name: "SNOWFLAKE_SAMPLE_DATA",
-    host_name: "https://dna38486.snowflakecomputing.com",
-    port_name: null,
-    conn_username: "DWHBI_SYSADMIN",
-    conn_password: "Tiger@dwhbi1",
-    db_connection_type: "SNOWFLAKE",
-    service_name: null,
-    account_name: "dna38486",
-    connection_string: null,
-    created_by: null,
-    schema: null,
-  },
-];
+import { getConnections } from "../../webRequests/api.services";
 
 export default function Connections() {
   const [connectionsList, setConnectionsList] = useState();
   useEffect(() => {
-    const url =
-      "http://ec2-54-197-121-247.compute-1.amazonaws.com:5000/connections-list";
-    // const url = "https://jsonplaceholder.typicode.com/users";
-    axios
-      .get(url)
-      .then((res) => {
-        setConnectionsList(res?.data || []);
-        console.log(res?.data);
+    console.log(getConnections);
+    getConnections()
+      .then((data) => {
+        setConnectionsList(data || []);
+        console.log(data);
       })
       .catch(console.error);
   }, []);
@@ -125,9 +87,12 @@ export default function Connections() {
       dataIndex: "schema",
     },
   ];
-  const dataSource =
-    connectionsList?.length > 0
-      ? connectionsList
-      : JSON.parse(data.replace("NaN", "null"));
-  return <Table columns={columns} dataSource={dataSource} />;
+  return (
+    <div
+      className="site-layout-content"
+      style={{ overflow: "auto", minHeight: "30rem" }}
+    >
+      <Table columns={columns} dataSource={connectionsList} />
+    </div>
+  );
 }
