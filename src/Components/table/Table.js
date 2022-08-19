@@ -29,8 +29,9 @@ const List = ({ header, data, w, setCol, setExp }) => {
                 <TableCell
                   className="tableCell head"
                   style={{ padding: "8px 60px" }}
+
                 >
-                  {h}
+                 <span style={{marginLeft:"30px"}}>{h}</span> 
                 </TableCell>
               ))}
             </TableRow>

@@ -122,7 +122,7 @@ const Saved = ({}) => {
       style={{
               height: "238px",
               display: "inline-block",
-              width: "800px",
+              width: "700px",
               overflowX:"scroll"
              
               
@@ -140,6 +140,7 @@ const Saved = ({}) => {
               <TableCell className="tableCell head">Edit</TableCell>
               <TableCell className="tableCell head">Delete</TableCell>
               <TableCell className="tableCell head">Extra</TableCell>
+              
             </TableRow>
           </TableHead>
           <TableBody>

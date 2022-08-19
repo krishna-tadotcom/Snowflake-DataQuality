@@ -35,6 +35,7 @@ const Home = ({setRouteName}) => {
   
   //fetch this project names from api
   const [projects, setProjects] = useState(['sankar', 'mukesh', 'tiger'])
+  const [Datasets, setDatasets] = useState(['team', 'school', 'college'])
 
   useEffect(()=>{
     //useEffect for getting project names
@@ -264,12 +265,26 @@ console.log(title)
 
                 </Select>
               </FormControl>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel id="demo-simple-select-standard-label">Dataset</InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  value={dataset}
+                  onChange={(e) => {
+                    setDataset(e.target.value)
+                  }}
+                  label="Age"
+                >
 
-              <TextField id="standard-basic" label="Data Set" variant="standard" value={dataset}
-              autoComplete="off"
-                onChange={(e) => {
-                  setDataset(e.target.value)
-                }} />
+                
+                  {Datasets.map(p => (<MenuItem value={p} key={p}>{p}</MenuItem>))}
+
+
+                </Select>
+              </FormControl>
+
+             
               {projectName && (dataset && <Button variant="outlined" className="getB display-none"  onClick={getData}>Get</Button>)}
 
            
@@ -277,12 +292,12 @@ console.log(title)
             </div>
             
             {showCol &&   
-            <div style={{display:"flex"}}>
+            <div style={{display:"flex",gap:"5px"}}>
               <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center",gap:"30px" }}>
-              <Table header={columnHeader} data={rows} w="170px" setCol={setCol} />
+              <Table header={columnHeader} data={rows} w="160px" setCol={setCol} />
               <Table header={ExpectationHeader} data={
                 expRows
-              } w="190px" setExp={setExp} />
+              } w="160px" setExp={setExp} />
             </div>
             <div style={{flex:"6"}}>
             <Databasedata />
