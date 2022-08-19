@@ -1,0 +1,9 @@
+{
+  "db_name": "METADATA", 
+  "table_schema": [
+    "PUBLIC", 
+    "DATAMODEL", 
+    "PG_CATALOG", 
+    "INFORMATION_SCHEMA"
+  ]
+}
