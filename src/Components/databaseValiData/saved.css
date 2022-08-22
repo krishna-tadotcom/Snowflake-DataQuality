@@ -1,17 +1,35 @@
+::-webkit-scrollbar {
+  height: 5px;
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 .in {
   float: left;
   margin-left: 10px;
   padding: 10px;
-  color: #726f6f;
+  color: rgb(114, 111, 111);
   border: 0;
-  border-bottom: 2px solid #726f6f;
+  border-bottom: 2px solid rgb(114, 111, 111);
   outline: none;
-  -webkit-transition: all ease 0.5s;
   transition: all ease 0.5s;
 }
-
 .in:focus {
-  border-bottom: 2px solid #1cb850;
+  border-bottom: 2px solid rgb(28, 184, 80);
 }
 
 select {
@@ -22,59 +40,50 @@ select {
 .table .bo {
   font-weight: 600;
   font-size: 10px !important;
-  color: #726f6f;
+  color: rgb(114, 111, 111);
 }
-
+.table .bo.tableCell {
+  padding: 8px !important;
+}
 .table .simple {
   border-top: 0px;
 }
-
 .table .tableCell {
-  font-size: 10px;
+  font-size: 12px !important;
+  text-transform: capitalize;
 }
-
 .table .tableCell i {
-  -webkit-transition: all ease 0.5s !important;
   transition: all ease 0.5s !important;
   cursor: pointer;
-  padding: 10px;
+  margin-top: -20px !important;
 }
-
 .table .tableCell i:hover {
-  -webkit-transform: scale(1.3);
-          transform: scale(1.3);
+  transform: scale(1.3);
 }
-
 .table .tableCell i.del {
   color: red;
 }
-
 .table .tableCell .boxC {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 2px;
 }
-
 .table .tableCell .boxC .box {
   height: 15px !important;
   width: 15px !important;
-  border: 1px solid #726f6f;
+  border: 1px solid rgb(114, 111, 111);
   border-radius: 2px;
   background-color: #089769;
 }
-
 .table .tableCell.plays .play {
   font-size: 8px;
   padding: 5px;
-  background-color: #3d77bd;
+  background-color: rgb(61, 119, 189);
   color: white;
   border-radius: 50%;
   text-align: center;
   margin-right: 5px;
   cursor: pointer;
 }
-
 .table .tableCell.plays .pause, .table .tableCell.plays .stop {
   font-size: 8px;
   padding: 5px;
@@ -85,23 +94,18 @@ select {
   margin-right: 5px;
   cursor: pointer;
 }
-
 .table .head {
   font-weight: 600;
-  color: #000000;
+  color: #f0e6e6;
+  background-color: #0F9FB4;
   font-size: 12px;
-  text-transform: capitalize;
+  padding: 12px !important;
+  text-transform: capitalize !important;
 }
-
 .table .cellWrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .table .cellWrapper .image {
   width: 32px;
   height: 32px;
@@ -110,30 +114,25 @@ select {
   -o-object-fit: cover;
      object-fit: cover;
 }
-
 .table .status {
   padding: 4px !important;
   border-radius: 5px;
 }
-
 .table .status.approved {
   color: white;
   background-color: #089769;
   padding: 5px;
   border-radius: 50%;
 }
-
 .table .status.pending {
   color: white;
-  background-color: #ebc463;
+  background-color: rgb(235, 196, 99);
   padding: 4px 8px !important;
   border-radius: 50%;
 }
-
 .table .status.canceled {
   color: white;
   background-color: red;
   padding: 4px 6px !important;
   border-radius: 50%;
-}
-/*# sourceMappingURL=saved.css.map */
+}/*# sourceMappingURL=saved.css.map */

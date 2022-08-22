@@ -1,8 +1,23 @@
-.bottom p .inputs:hover > i {
+p .inputs:hover > i {
   display: block !important;
 }
 
-.cover .loader {
+.total .cover {
+  position: absolute;
+  background: black;
+  opacity: 0.8;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: white !important;
+  transition: all ease 0.8s;
+  transform: translateY(-2000px);
+}
+.total .cover.tran {
+  transform: translateY(0px);
+}
+.total .cover .loader {
   width: 40px;
   height: 40px;
   border-top: 2px solid #0cc45c;
@@ -44,7 +59,8 @@
     border-top: 2px solid #b4ce22;
   }
 }
-.cover p {
+.total .cover p {
+  color: white !important;
   font-weight: 900;
   text-transform: capitalize;
   font-size: 25px;
@@ -53,10 +69,10 @@
   text-align: center;
   margin-left: 20px;
 }
-.cover input[type=number] {
+.total .cover input[type=number] {
   padding: 10px;
 }
-.cover input[type=number]:focus {
+.total .cover input[type=number]:focus {
   outline: none;
   border: 1px solid rgb(0, 255, 38) !important;
 }/*# sourceMappingURL=validation.css.map */
