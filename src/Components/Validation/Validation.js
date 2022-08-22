@@ -48,7 +48,7 @@ const Validation = ({
   }, [col, exp]);
 
   const ArrayIn = (e) => {
-    setInArray((prev) => [...prev, e.target.value]);
+    setInArray((prev) => [...prev, e.target.value.trim()]);
     setInput1("");
   };
 
@@ -140,7 +140,7 @@ const Validation = ({
               Format:
             </span>{" "}
             <span style={{ textTransform: "capitalize", marginLeft: "5px" }}>
-              {exp}
+              {exp.charAt(exp.length-1)} Inputs
             </span>
           </label>
         </div>
@@ -191,6 +191,7 @@ const Validation = ({
             <Input 
               placeholder="Inputs..."
               value={input1}
+              type="number"
               required
               style={{ width: "65%",position:"relative" }}
               onBlur={ArrayIn}
