@@ -9,11 +9,11 @@ import "./validation.scss";
 
 const EditValidation = () => {
   const [showModal, setShowModal] = useState(false);
- 
+  
   const navigate = useNavigate();
   const [inArray, setInArray] = useState([]);
-  const [input1, setInput1] = useState(0);
-  const [input2, setInput2] = useState(0);
+  const [input1, setInput1] = useState('');
+  
   const [load, setLoad] = useState(false);
   const [data, setData] = useState({
     title:'',
@@ -24,7 +24,17 @@ const EditValidation = () => {
     exp: "",
     col: "",
   });
+  const ArrayIn = (e) => {
+    setInArray((prev) => [...prev, e.target.value]);
+    setInput1("");
+  };
 
+  const deletion = (i) => {
+    console.log(i);
+    
+    setInArray(inArray.filter((p,j)=>i!==j))
+    
+  };
   const { id } = useParams();
 
   useEffect(() => {
@@ -41,10 +51,9 @@ const EditValidation = () => {
         exp: data[0].Expectation,
         col: data[0].column,
       });
-      setInput1(data[0].inputs[0]);
-      setInput2(data[0].inputs[1]);
+     setInArray([...data[0].inputs])
     }
-  }, []);
+  }, [id]);
 
   const handleInputs = () => {
     // you can call the api for validate
@@ -62,14 +71,14 @@ const EditValidation = () => {
               tag:data.tag,
               column: data.col,
               ProjectName: data.projectName,
-              inputs: [input1, input2],
+              inputs: inArray,
             }
           : p
       );
 
       localStorage.setItem("savedData", JSON.stringify(newOne));
       setInput1("");
-      setInput2("");
+      
       navigate("/validate");
     }, 3000);
   };
@@ -187,8 +196,8 @@ const EditValidation = () => {
     //             Please Enter Inputs
     //           </Button>
     //         )}
-    //         <i
-    //           className="fa-solid fa-xmark"
+            // <i
+            //   className="fa-solid fa-xmark"
     //             onClick={(e)=>{
     //                 navigate('/validate')
     //             }}
@@ -222,7 +231,7 @@ const EditValidation = () => {
    
     setInput1('')
    
-    setInput2('')
+    
     // showPop()
       navigate("/validate");
     }}
@@ -253,12 +262,67 @@ const EditValidation = () => {
     </p>
     <p>
     <label style={{fontWeight:"600",fontSize:"16px"}}>Expectation Inputs:  </label>
-   <Input placeholder="Inputs..." value={input1} required style={{width:"150px"}}   onChange={e=>setInput1(e.target.value)}/>
- 
-   <Input placeholder="Inputs"  value={input2}  required style={{width:"150px",marginLeft:"12px"}}   onChange={e=>setInput2(e.target.value)}/>
+    {inArray.length < +data.exp.charAt(data.exp.length-1) ? (
+      <>
+            <Input 
+              placeholder="Inputs..."
+              value={input1}
+              required
+              style={{ width: "65%",position:"relative" }}
+              onBlur={ArrayIn}
+              onChange={(e) => setInput1(e.target.value)}
+            />
+            <i
+            class="fas fa-plus" style={{position:"absolute",right:"45px",top:"305px",cursor:"pointer",background:"skyblue",
+            padding:"5px",borderRadius:"50%"
+            }}
+            
+          ></i>
+            </>
+          ) : (
+            <span style={{ marginLeft: "4px", fontWeight: "200px" }}>
+              You have entered the required inputs
+            </span>
+          )} 
+   
     
     
     </p>
+    <p>
+    {inArray.map((i, index) => (
+            <span
+            
+              style={{
+                background: "rgb(114, 111, 111,0.3)",
+                padding: "5px",
+                color: "black",
+                marginRight: "5px",
+                cursor: "pointer",
+                position:"relative"
+              }}
+              className="inputs"
+              onClick={(e) => {
+                deletion(index);
+              }}
+            >
+              {i}
+              <i className="fa-solid fa-xmark"
+              style={{
+                display:"none",
+               position:"absolute",
+                color:"white",
+                fontSize:"8px",
+                top:"-5px",
+                right:"-2px",
+                background:"red",
+                padding:"2px",
+                borderRadius:"50%"
+          }}
+          ></i>
+            </span>
+            
+          ))}
+        </p>
     
   </Modal>
 </>

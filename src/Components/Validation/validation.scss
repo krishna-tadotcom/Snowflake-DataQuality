@@ -1,3 +1,16 @@
+
+
+.bottom{
+    p{
+        .inputs{
+           &:hover>i {
+            display: block !important;
+            
+           }
+        
+                }
+    }
+}
 .cover{
      .loader{
         width: 40px;
