@@ -245,7 +245,7 @@ const EditValidation = () => {
    <br />
    <div style={{display:"flex",justifyContent:"space-between",width:"450px"}}>
    <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"black"}}>Expectation:</span>  <span style={{textTransform:"capitalize",marginLeft:"5px"}}>{data.exp}</span></label> 
-   <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"black"}}>Format:</span> <span style={{textTransform:"capitalize",marginLeft:"5px"}}>{data.exp}</span></label> 
+   <label style={{display:"inline-block"}}><span style={{fontWeight:"600",fontSize:"16px",color:"black"}}>Format:</span> <span style={{textTransform:"capitalize",marginLeft:"5px"}}>{data.exp.charAt(data.exp.length-1)} Inputs</span></label> 
    </div>
    <hr />
    <p style={{display:"flex"}}>
