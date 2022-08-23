@@ -14,31 +14,111 @@ import { useEffect, useState } from "react";
 import { Button, Paper, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { useNavigate } from "react-router";
 import Validation from "../../Components/validation/Validation";
+import Saved from '../../Components/saved/Saved'
+import Databasedata from '../../Components/databaseValiData/Databasedata'
 // added home
 
 
 
 
 
-const Home = () => {
+const Home = ({setRouteName}) => {
 
+ const [backVali,setBackVali] = useState({
+  "datasets": [
+      {
+          "col_list": [
+              {
+                  "attribute_key_type": "PK",
+                  "column_name": "POLICY_NUMBER",
+                  "data_type": "TEXT",
+                  "precision": 10,
+                  "scale": 0,
+                  "trans_logic": ""
+              },
+              {
+                  "attribute_key_type": "NK",
+                  "column_name": "LCPC_CODE",
+                  "data_type": "TEXT",
+                  "precision": 10,
+                  "scale": 0,
+                  "trans_logic": ""
+              }
+          ],
+          "connection_id": 1,
+          "created_by": "",
+          "dataset_desc": "Test Dataset",
+          "dataset_id": 1,
+          "dataset_name": "XYZ",
+          "dataset_type": "",
+          "db_name": "LID_PRD",
+          "schema_name": "EDV",
+          "table_name": "POLICY_GENERAL"
+      },
+      {
+          "col_list": [
+              {
+                  "attribute_key_type": "PK",
+                  "column_name": "Data_NUMBER",
+                  "data_type": "TEXT",
+                  "precision": 10,
+                  "scale": 0,
+                  "trans_logic": ""
+              },
+              {
+                  "attribute_key_type": "NK",
+                  "column_name": "D_CODE",
+                  "data_type": "TEXT",
+                  "precision": 10,
+                  "scale": 0,
+                  "trans_logic": ""
+              }
+          ],
+          "connection_id": 1,
+          "created_by": "",
+          "dataset_desc": "Test Dataset",
+          "dataset_id": 2,
+          "dataset_name": "ABC",
+          "dataset_type": "",
+          "db_name": "LID_PRD",
+          "schema_name": "EDV",
+          "table_name": "POLICY_GENERAL"
+      }
+  ]
+})
+// console.log(backVali.datasets)
+useEffect(()=>{
+ 
+},[backVali.datasets])
+
+
+
+  
+  const [showCol,setShowCol] = useState(false)
   //number of inputs in validation
   const [NumberOfInputs,setNumber] = useState(0)
 
+  const [inputsEdit,setInputsEdit] = useState([])
 
   const [projectName, setProjectname] = useState('')
   
   //fetch this project names from api
   const [projects, setProjects] = useState(['sankar', 'mukesh', 'tiger'])
+  const [Datasets, setDatasets] = useState([])
+
+
 
   useEffect(()=>{
-    //useEffect for getting project names
-
+    //useEffect for getting project names and datasets
+    backVali.datasets.map((data)=>{
+      setDatasets(prev=>[...prev,data.dataset_name])
+    })
   },[])
 
 
   // user inputs into this dataset
   const [dataset, setDataset] = useState('')
+
   useEffect(()=>{
     //useEffect for getting dataset names by using project name from api
 
@@ -59,14 +139,22 @@ const Home = () => {
   
 
   // storing the column data
-  const [colArray, setColArray] = useState([])
-  const [expArray, setExpArray] = useState([])
+  // const [colArray, setColArray] = useState('')
+  // const [expArray, setExpArray] = useState('')
 
 
   // storing expectation and column value
   const [col,setCol]  = useState('')
   const [exp,setExp]  = useState('')
+  const [title,setTitle] = useState('')
+  const [dataQuality,setDataQuality] = useState('')
+  const [tag,setTag] = useState('')
 
+
+  const [pop,setPop] = useState('')
+
+
+  //getting data in the db
 
 
 
@@ -79,37 +167,104 @@ const Home = () => {
 
 
   const getData = (e) => {
+    setShowCol(true)
     //fetch api and place response in rows variable using dataset variable
-    setRows(['id', 'email', 'first_name', 'last_name', 'role'])
+    // backVali.datasets.map((data)=>{
+    //   data.col_list.map(c=>setRows(prev=>[...prev,c.column_name]))
+    // })
+    setRows([])
+    backVali.datasets.filter(data=>{
+      if(data.dataset_name===dataset){
+        data.col_list.map(c=>setRows(prev=>[...prev,c.column_name]))
+      }
+  })
+    
+
+
+   
 
     setColumnHeader(['columns'])
     setExpectationHeader(['Expectation'])
-    setExprow(["Expectation1", "Expectation2", "Expectation3", "Expectation4", "Expectation5"])
+    setExprow(["Expectation1", "Expectation2", "Expectation3", "Expectation4", "Expectation5","Expectation6",
+  "Expectation7","Expectation8","Expectation9","Expectation10"
+  ])
     
 
   }
 
-  const showPop = (index) => {
-    document.documentElement.scrollTop = 0;
 
-    setCol(colArray[index])
-    setExp(expArray[index])
-    document.querySelector('.pop').classList.toggle('tran')
-    document.querySelector('#overf').classList.toggle('overf')
-    if(exp!==undefined){
-      setNumber(+exp.charAt(exp.length-1))
+  
+  // const showEditPop = (P,d,c,e,i) => {
+  //   if(pop === 'norm'){
+  //     setPop('cross')
+  //   }
+  //   else{
+  //     setPop('norm')
+  //   }
+
+  //   if(P!=='' && d!=='' && c!=='' && e!==''){
+  //     setPop('')
+  //     setCol(c)
+  //     setExp(e)
+  //     setDataset(d)
+  //     setProjectname(P)
+  //     setInputsEdit(i[0])
+      
+  //   }
+   
+  // }
+ useEffect(()=>{
+  console.log(inputsEdit)
+ },[inputsEdit])
+
+  const showPop = () => {
+    if(pop === 'norm'){
+      setPop('cross')
     }
+    else{
+      setPop('norm')
+    }
+ 
+    setTitle('')
+    setDataQuality('')
+    setTag('')
+    
+
+
+
+    document.documentElement.scrollTop = 0;
+    
+   
+
+    
+    // document.querySelector('#overf').classList.toggle('overf')
+    
 
   }
+  useEffect(()=>{
+    if(exp!==undefined || col!==undefined){
+      setNumber(+exp.charAt(exp.length-1))
+    }
+  },[col,exp])
+
+
 
   // saving into local or api
   const saveData = (inputs) => {
+
+
+
+
     const data = {
       "id": Math.floor(Math.random() * 1000) + 1,
+      "tittle":title,
+      "dataQuality":dataQuality,
+      "tag":tag,
       "column": col,
       "Expectation": exp,
-      "Database": projectName,
-      "inputs":[inputs]
+      "ProjectName": projectName,
+      "Dataset":dataset,
+      "inputs":inputs
     }
    
     if(!localStorage.getItem('savedData')){
@@ -121,17 +276,43 @@ const Home = () => {
       const local = [...JSON.parse(localStorage.getItem('savedData')), data]
       localStorage.setItem('savedData', JSON.stringify(local))
     }
-    document.querySelector('#overf').classList.toggle('overf')
-    document.querySelector('.pop').classList.toggle('tran')
-    document.querySelector('#overf').classList.remove('overf')
+    
+
+    // document.querySelector('#overf').classList.toggle('overf')
+    // document.querySelector('.pop').classList.toggle('tran')
+    // document.querySelector('#overf').classList.remove('overf')
+    setPop('')
+    setCol('')
+    setExp('')
+
     navigate('/validate')
 
   }
 
-  useEffect(()=>{
+useEffect(()=>{
+console.log(title)
+},[title])
+
+
   
 
+  useEffect(()=>{
+  if(exp!=='' && col!==''){
+    showPop()
+    
+  }
+
   },[col,exp])
+  useEffect(()=>{
+    
+    if(pop==='cross'){
+      
+      setCol('')
+      setExp('')
+     
+    }
+  
+  },[pop])
 
 
 
@@ -144,7 +325,7 @@ const Home = () => {
       
       <div className="homeContainer">
 
-        <div className="d">
+       
 
 
           <div className="innerD">
@@ -170,68 +351,62 @@ const Home = () => {
 
                 </Select>
               </FormControl>
+              <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                <InputLabel id="demo-simple-select-standard-label">Dataset</InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  value={dataset}
+                  onChange={(e) => {
+                    setDataset(e.target.value)
+                  }}
+                  label="Age"
+                >
 
-              <TextField id="standard-basic" label="Data Set" variant="standard" value={dataset}
-              autoComplete="off"
-                onChange={(e) => {
-                  setDataset(e.target.value)
-                }} />
+                
+                  {Datasets.map(p => (<MenuItem value={p} key={p}>{p}</MenuItem>))}
+
+
+                </Select>
+              </FormControl>
+
+             
               {projectName && (dataset && <Button variant="outlined" className="getB display-none"  onClick={getData}>Get</Button>)}
 
-
-
+           
 
             </div>
-            <div>
-              {colArray.length !== 0 && 
-              
-                <table className="tb">
-               
-                {colArray.map((row,index)=>(
-                  <tbody className="bg-dark p-1 mb-2" style={{position:"relative"}} >
-                   
-                    <tr>
-                      <td style={{marginTop:"-5px",marginLeft:"10px",color:"white"}}>
-                        {row}
-
-                      </td>
-                      <td style={{marginTop:"-5px",color:"white",position:"absolute",left:"180px"}}>{expArray[index]}</td>
-                      <td style={{marginTop:"-5px",color:"white",position:"absolute",left:"380px"}}>{projectName}</td>
-                      <td style={{marginTop:"-5px",color:"white",position:"absolute",left:"580px"}}>{dataset}</td>
-                      <td style={{marginTop:"-10px"}}>
-                      {expArray[index] &&<Button 
-                        onClick={(e)=>{showPop(index)}}>Run</Button>}
-                        </td>
-
-                    </tr>
-                    </tbody>
-                  
-                   ))}
-                  
-
-
-                </table>
-              
-
-              }
-            </div>
-
-          {dataset &&   <div style={{ width: "900px", marginLeft: "100px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <Table header={columnHeader} data={rows} w="180px" setColArray={setColArray} />
+            
+            {showCol &&   
+            <div style={{display:"flex",gap:"5px"}}>
+              <div style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "center",gap:"30px" }}>
+              <Table header={columnHeader} data={rows} w="160px" setCol={setCol} />
               <Table header={ExpectationHeader} data={
                 expRows
-              } w="230px" setExpArray={setExpArray} />
-            </div>}
-            <div class="pop">
-              <div style={{ width: "100%" }} className="inpop">
-                <div className="vali">
-                  <i className="fa-solid fa-xmark" onClick={showPop}></i>
-                  <Validation  saveData={saveData} number={NumberOfInputs}/></div>
-              </div>
+              } w="160px" setExp={setExp} />
             </div>
+            <div style={{flex:"6"}}>
+            <Databasedata />
+            </div>
+              </div>
+            }
+
+        
+            <div>
+             <Saved />
+            </div>
+            
+              {/* <div style={{ width: "100%" }} className="inpop"> */}
+                
+                 
+                  <Validation showPop={showPop} saveData={saveData} number={NumberOfInputs} projectName={projectName} exp={exp} col={col} dataset={dataset}
+                  inputsEdit={inputsEdit} setTitle={setTitle} setDataQuality={setDataQuality} setTag={setTag} dataQuality={dataQuality} tag={tag} title={title}
+                  />
+              {/* </div> */}
+            
           </div>
         </div>
-      </div>
+      
     </div>
   );
 };

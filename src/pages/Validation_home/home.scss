@@ -1,39 +1,35 @@
 .home {
   display: flex;
   
-
+  
   .homeContainer {
     flex: 7;
     
-    .d{
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding:15px;
-      background-color: rgba(201, 201, 201, 0.304);
+    
+ 
       
       
       .innerD{
         background-color: white;
-       
+      
 
         .pop{
-          position: absolute;
-          left:0;
-          top:0;
-          bottom:0;
-          right:0;
-          min-height: 120vh !important;
-          overflow-y: hidden !important;
-          background: black;
-          opacity:0.9;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          color:white;
-          transition: all ease 1.5s !important;
-          transform: translateY(-2000px);
+          // position: absolute;
+          // left:0;
+          // top:0;
+          // bottom:0;
+          // right:0;
+          // min-height: 100vh !important;
+          // overflow-y: hidden !important;
+          // // background: black;
+          // opacity:1 !important;
+          // display: flex;
+          // flex-direction: column;
+          // justify-content: center;
+          // align-items: center;
+          // color:white;
+          // transition: all ease 0.8s !important;
+          // transform: translate(-600px);
 
           &.tran{
             transform: translateY(0px);
@@ -44,24 +40,18 @@
             
             max-width:900px;
             margin:0 auto !important;
-            .vali{
-              width: 80%;
-              text-align: center;
-              background: white;
-              margin-top: -250px !important;
-              margin-left:80px !important;
-              z-index:999 !important;
-              position: relative;
+            position: relative;
+          
               i{
                 position: absolute;
-                right:10px;
-                top:10px;
+                right:220px;
+                top:50px;
                 color: red !important;
-                cursor:pointer;
+                
                 font-size: 18px;
 
               }
-            }
+            
            
           }
         }
@@ -112,7 +102,7 @@
         }
       }
      
-    }
+    
 
     .widgets {
       margin-top:-20px ;

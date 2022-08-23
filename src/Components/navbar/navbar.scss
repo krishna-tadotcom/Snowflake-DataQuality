@@ -1,41 +1,90 @@
-.navbar {
-  
-  height: 60px !important;
- 
-  display: flex;
-  align-items: center;
-  transform: translateY(-30px);
-  
-  color: #555;
 
+  
+
+ .header{
+  display: flex;
+  justify-content: space-between !important;
   .wrapper {
-    width: 100%;
-    padding: 15px;
-    display: flex;
+   width: 100% !important;
+    padding: 15px !important;
+    display: flex !important;
+    margin-left: 12px !important;
     align-items: center;
+    justify-content: space-between !important;
+    height:60px;
     
     
- 
+  .add{
+    i{
+      &:hover {
+        
+        color:#a6a8aa;
+      }
+    }
+    .sub{
+      width:150px;
+      z-index: 999 !important;
+      border:1px solid rgba(165, 159, 159, 0.233);
+      border-radius: 5px;
+      display: none;
+      // justify-content: center;
+      // align-items: center;
+      height: 129px;
+      
+      
+
+    .pC{
+      
+      span{
+        padding: 6px ;
+        font-size: 13px;
+        font-weight: 400;
+        display: block;
+        
+        color:black;
+       
+        &:hover{
+          background: #d1d2d3;
+        }
+      }
+    }
+
+
+    &.dis{
+      display: block !important;
+    }
+    }
+   
+  
+  }
 
     
 
     .items {
       display: flex;
       align-items: center;
+      width: 100%;
       transform: translateY(5px);
-      margin-left: 20px;
+     
+      
+     
+      
 
 
       .item {
+        font-family: 14px, "Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji" !important;
         display: flex;
         align-items: center;
         margin-right: 20px;
         position: relative;
-        font-size: 10px;
+     
         text-transform: capitalize;
-        margin-left: 0;
+        margin: 16px 16px 16px 0px;
         cursor: pointer;
-        font-weight: bolder;
+        font-weight: 600;
+        color: white;
+        font-size: 14px;
+        padding: 16px 0px;
 
         // .icon {
         //   font-size: 20px;
@@ -47,12 +96,13 @@
         //   border-radius: 50%;
         // }
         &:hover{
-          color: rgb(69, 145, 178);
-          border-bottom: 2px solid rgb(69, 145, 178);
+         
+        color:#a6a8aa;
         }
 
         
       }
     }
   }
-}
+ }
+

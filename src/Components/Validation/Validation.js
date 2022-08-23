@@ -1,91 +1,258 @@
-import { Button, TextField } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import { Form } from 'react-bootstrap'
-import FormContainer from '../FormContainer'
+import { Button, TextField } from "@mui/material";
+import { Input, Modal } from "antd";
+import React, { useEffect, useState } from "react";
+import { Form } from "react-bootstrap";
+import { useNavigate } from "react-router";
+import FormContainer from "../FormContainer";
 
-import './validation.scss'
+import "./validation.scss";
 
+const Validation = ({
+  saveData,
+  number,
+  showPop,
+  projectName,
+  exp,
+  col,
+  dataset,
+  setTitle,
+  setDataQuality,
+  setTag,
+  tag,
+  dataQuality,
+  title,
+}) => {
+  const [inArray, setInArray] = useState([]);
+  const [input1, setInput1] = useState("");
 
-const Validation = ({saveData,number}) => {
-    const [inArray,setInArray] = useState([])
-    const [input1, setInput1] = useState(0)
-    const [input2, setInput2] = useState(0)
-    const [load,setLoad] = useState(false)
-   
-    const handleInputs = ()=>{
-        // you can call the api for validate
-        setLoad(true)
+  const [load, setLoad] = useState(false);
 
-        console.log(input1,input2)
-       setTimeout(()=>{
-        
-        setLoad(false)
-        // calling saveData() which is in Home.js
-        saveData([input1,input2])
-        setInput1('')
-        setInput2('')
-       },3000)
+  const handleInputs = () => {
+    // you can call the api for validate
+    setLoad(true);
+
+    setTimeout(() => {
+      setLoad(false);
+      // calling saveData() which is in Home.js
+      saveData(inArray);
+    }, 3000);
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (col !== "" && exp !== "") {
+      setShowModal(true);
     }
+  }, [col, exp]);
 
-    useEffect(()=>{
+  const ArrayIn = (e) => {
+    setInArray((prev) => [...prev, e.target.value.trim()]);
+    setInput1("");
+  };
 
-        for(let i=0;i<number;i++){
-            setInArray(arr=>[...arr,1])
-        }
-    },[number])
+  const deletion = (i) => {
+    console.log(i);
+    
+    setInArray(inArray.filter((p,j)=>i!==j))
+    
+  };
 
- 
-  
-    return (
+  useEffect(() => {
+    console.log(inArray);
+  }, [inArray]);
 
+  return (
+    <>
+      <Modal
+        title="Data validate"
+        centered
+        visible={showModal}
+        onOk={() => {
+          setShowModal(false);
+          handleInputs();
+          setInput1("");
+          setInArray([]);
+          showPop();
+          navigate("/validate");
+        }}
+        onCancel={() => {
+          setShowModal(false);
+          setInput1("");
+          setInArray([]);
+          showPop();
+          navigate("/validate");
+        }}
+        okText="Submit"
+        cancelText="Reset"
+      >
+        <div className="top"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "450px",
+          }}
+        >
+          <label style={{ display: "inline-block" }}>
+            <span
+              style={{ fontWeight: "600", fontSize: "16px", color: "black" }}
+            >
+              Dataset:
+            </span>{" "}
+            <span style={{ textTransform: "capitalize", marginLeft: "5px" }}>
+              {dataset}
+            </span>
+          </label>
+          <label style={{ display: "inline-block" }}>
+            <span
+              style={{ fontWeight: "600", fontSize: "16px", color: "black" }}
+            >
+              Column:
+            </span>
+            <span style={{ textTransform: "capitalize", marginLeft: "5px" }}>
+              {col}
+            </span>
+          </label>
+        </div>
+        <br />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "450px",
+          }}
+        >
+          <label style={{ display: "inline-block" }}>
+            <span
+              style={{ fontWeight: "600", fontSize: "16px", color: "black" }}
+            >
+              Expectation:
+            </span>{" "}
+            <span style={{ textTransform: "capitalize", marginLeft: "5px" }}>
+              {exp}
+            </span>
+          </label>
+          <label style={{ display: "inline-block" }}>
+            <span
+              style={{ fontWeight: "600", fontSize: "16px", color: "black" }}
+            >
+              Format:
+            </span>{" "}
+            <span style={{ textTransform: "capitalize", marginLeft: "5px" }}>
+              {exp.charAt(exp.length-1)} Inputs
+            </span>
+          </label>
+        </div>
+        <hr />
+       <div className="bottom">
+         <p style={{ display: "flex" }}>
+          <label style={{ fontWeight: "600", fontSize: "16px" }}>
+            Test Name:{" "}
+          </label>
+          <Input
+            placeholder="Test Name..."
+            required
+            style={{ width: "380px" }}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+        </p>
+        <p>
+          <label style={{ fontWeight: "600", fontSize: "16px" }}>
+            Data Quality:{" "}
+          </label>
+          <Input
+            placeholder="DataQuality Name..."
+            required
+            style={{ width: "180px" }}
+            value={dataQuality}
+            onChange={(e) => setDataQuality(e.target.value)}
+          />
+          <label
+            style={{ fontWeight: "600", fontSize: "16px", marginLeft: "2px" }}
+          >
+            Tag:{" "}
+          </label>
+          <Input
+            placeholder="Tag Name..."
+            required
+            style={{ width: "146px" }}
+            value={tag}
+            onChange={(e) => setTag(e.target.value)}
+          />
+        </p>
+        <p>
+          <label style={{ fontWeight: "600", fontSize: "16px" }}>
+            Expectation Inputs:
+          </label>
+          {inArray.length < number ? (
+            <>
+            <Input 
+              placeholder="Inputs..."
+              value={input1}
+              type="number"
+              required
+              style={{ width: "65%",position:"relative" }}
+              onBlur={ArrayIn}
+              onChange={(e) => setInput1(e.target.value)}
+            />
+            <i
+            class="fas fa-plus" style={{position:"absolute",right:"45px",top:"305px",cursor:"pointer",background:"skyblue",
+            padding:"5px",borderRadius:"50%"
+            }}
+            
+          ></i>
+            </>
+          ) : (
+            <span style={{ marginLeft: "4px", fontWeight: "200px" }}>
+              You have entered the required inputs
+            </span>
+          )}
+        </p>
+        <p>
+          {inArray.map((i, index) => (
+            <span
+            
+              style={{
+                background: "rgb(114, 111, 111,0.3)",
+                padding: "5px",
+                color: "black",
+                marginRight: "5px",
+                cursor: "pointer",
+                position:"relative"
+              }}
+              className="inputs"
+              onClick={(e) => {
+                deletion(index);
+              }}
+            >
+              {i}
+              <i className="fa-solid fa-xmark"
+              style={{
+                display:"none",
+               position:"absolute",
+                color:"white",
+                fontSize:"8px",
+                top:"-5px",
+                right:"-2px",
+                background:"red",
+                padding:"2px",
+                borderRadius:"50%"
+          }}
+          ></i>
+            </span>
+            
+          ))}
+          <span>
+          
+          </span>
+        </p>
+       </div>
 
+      </Modal>
+    </>
+  );
+};
 
-        <div style={{padding:"50px 0" , display:"flex",justifyContent:"center",alignItems:"center",}} className="cover">
-            <FormContainer>
-                    <Form>
-                    <p>Enter the inputs</p>
-                    <input  type="number" value={input1}  required 
-                        onChange={(e) => {
-                            setInput1(e.target.value)
-                            console.log(e.target.value)
-                        }} 
-                        autoComplete="off"
-                            style={{display:"block",margin:"20px",width:"100%",color:"black"}}
-                        />
-
-                    <input type="number" value={input2}
-                   
-                        onChange={(e) => {
-                            setInput2(e.target.value)
-                            console.log(e.target.value)
-                            
-                        }}  autoComplete="off"
-                            style={{display:"block",margin:"20px",width:"100%",color:"black"}}/>
-
-
-                   {input1 > 0 ? 
-                   (input2>0 ? 
-                   (!load ? <Button variant='outlined' style={{marginLeft:"50px"}} 
-                    onClick={handleInputs}
-                    >Save</Button>
-                    :
-                  <div className='loader m-auto'>Loading</div>
-                    )
-                    :
-
-                    <Button variant='outlined' disabled style={{marginLeft:"50px",color:"red"}}>Please Enter Inputs</Button>
-                    )
-                    :
-                    <Button variant='outlined' style={{marginLeft:"50px",color:"red"}} disabled
-                    
-                    >Please Enter Inputs</Button>
-                    }
-                    </Form>
-
-
-
-            </FormContainer></div>
-    )
-}
-
-export default Validation
+export default Validation;

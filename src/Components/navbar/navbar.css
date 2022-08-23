@@ -1,57 +1,60 @@
-.navbar {
-  height: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
+.header {
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transform: translateY(-30px);
-          transform: translateY(-30px);
-  color: #555;
+  justify-content: space-between !important;
 }
-
-.navbar .wrapper {
+.header .wrapper {
+  width: 100% !important;
+  padding: 15px !important;
+  display: flex !important;
+  margin-left: 12px !important;
+  align-items: center;
+  justify-content: space-between !important;
+  height: 60px;
+}
+.header .wrapper .add i:hover {
+  color: #a6a8aa;
+}
+.header .wrapper .add .sub {
+  width: 150px;
+  z-index: 999 !important;
+  border: 1px solid rgba(165, 159, 159, 0.233);
+  border-radius: 5px;
+  display: none;
+  height: 129px;
+}
+.header .wrapper .add .sub .pC span {
+  padding: 6px;
+  font-size: 13px;
+  font-weight: 400;
+  display: block;
+  color: black;
+}
+.header .wrapper .add .sub .pC span:hover {
+  background: #d1d2d3;
+}
+.header .wrapper .add .sub.dis {
+  display: block !important;
+}
+.header .wrapper .items {
+  display: flex;
+  align-items: center;
   width: 100%;
-  padding: 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  transform: translateY(5px);
 }
-
-.navbar .wrapper .items {
-  display: -webkit-box;
-  display: -ms-flexbox;
+.header .wrapper .items .item {
+  font-family: 14px, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji" !important;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transform: translateY(5px);
-          transform: translateY(5px);
-  margin-left: 20px;
-}
-
-.navbar .wrapper .items .item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   margin-right: 20px;
   position: relative;
-  font-size: 10px;
   text-transform: capitalize;
-  margin-left: 0;
+  margin: 16px 16px 16px 0px;
   cursor: pointer;
-  font-weight: bolder;
+  font-weight: 600;
+  color: white;
+  font-size: 14px;
+  padding: 16px 0px;
 }
-
-.navbar .wrapper .items .item:hover {
-  color: #4591b2;
-  border-bottom: 2px solid #4591b2;
-}
-/*# sourceMappingURL=navbar.css.map */
+.header .wrapper .items .item:hover {
+  color: #a6a8aa;
+}/*# sourceMappingURL=navbar.css.map */
