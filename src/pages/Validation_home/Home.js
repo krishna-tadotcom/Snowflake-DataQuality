@@ -24,6 +24,75 @@ import Databasedata from '../../Components/databaseValiData/Databasedata'
 
 const Home = ({setRouteName}) => {
 
+ const [backVali,setBackVali] = useState({
+  "datasets": [
+      {
+          "col_list": [
+              {
+                  "attribute_key_type": "PK",
+                  "column_name": "POLICY_NUMBER",
+                  "data_type": "TEXT",
+                  "precision": 10,
+                  "scale": 0,
+                  "trans_logic": ""
+              },
+              {
+                  "attribute_key_type": "NK",
+                  "column_name": "LCPC_CODE",
+                  "data_type": "TEXT",
+                  "precision": 10,
+                  "scale": 0,
+                  "trans_logic": ""
+              }
+          ],
+          "connection_id": 1,
+          "created_by": "",
+          "dataset_desc": "Test Dataset",
+          "dataset_id": 1,
+          "dataset_name": "XYZ",
+          "dataset_type": "",
+          "db_name": "LID_PRD",
+          "schema_name": "EDV",
+          "table_name": "POLICY_GENERAL"
+      },
+      {
+          "col_list": [
+              {
+                  "attribute_key_type": "PK",
+                  "column_name": "Data_NUMBER",
+                  "data_type": "TEXT",
+                  "precision": 10,
+                  "scale": 0,
+                  "trans_logic": ""
+              },
+              {
+                  "attribute_key_type": "NK",
+                  "column_name": "D_CODE",
+                  "data_type": "TEXT",
+                  "precision": 10,
+                  "scale": 0,
+                  "trans_logic": ""
+              }
+          ],
+          "connection_id": 1,
+          "created_by": "",
+          "dataset_desc": "Test Dataset",
+          "dataset_id": 2,
+          "dataset_name": "ABC",
+          "dataset_type": "",
+          "db_name": "LID_PRD",
+          "schema_name": "EDV",
+          "table_name": "POLICY_GENERAL"
+      }
+  ]
+})
+// console.log(backVali.datasets)
+useEffect(()=>{
+ 
+},[backVali.datasets])
+
+
+
   
   const [showCol,setShowCol] = useState(false)
   //number of inputs in validation
@@ -35,16 +104,21 @@ const Home = ({setRouteName}) => {
   
   //fetch this project names from api
   const [projects, setProjects] = useState(['sankar', 'mukesh', 'tiger'])
-  const [Datasets, setDatasets] = useState(['team', 'school', 'college'])
+  const [Datasets, setDatasets] = useState([])
+
+
 
   useEffect(()=>{
-    //useEffect for getting project names
-
+    //useEffect for getting project names and datasets
+    backVali.datasets.map((data)=>{
+      setDatasets(prev=>[...prev,data.dataset_name])
+    })
   },[])
 
 
   // user inputs into this dataset
   const [dataset, setDataset] = useState('')
+
   useEffect(()=>{
     //useEffect for getting dataset names by using project name from api
 
@@ -95,7 +169,19 @@ const Home = ({setRouteName}) => {
   const getData = (e) => {
     setShowCol(true)
     //fetch api and place response in rows variable using dataset variable
-    setRows(['id', 'email', 'first_name', 'last_name', 'role','value','time','expire'])
+    // backVali.datasets.map((data)=>{
+    //   data.col_list.map(c=>setRows(prev=>[...prev,c.column_name]))
+    // })
+    setRows([])
+    backVali.datasets.filter(data=>{
+      if(data.dataset_name===dataset){
+        data.col_list.map(c=>setRows(prev=>[...prev,c.column_name]))
+      }
+  })
+    
+
+
+   
 
     setColumnHeader(['columns'])
     setExpectationHeader(['Expectation'])

@@ -65,7 +65,7 @@ const List = ({ header, data, w, setCol, setExp }) => {
                       }}
                     >
                       <div
-                        style={{ marginLeft: "25px" }}
+                        style={{ marginLeft: "2px" }}
                         className="col"
                         name={row}
                       >
